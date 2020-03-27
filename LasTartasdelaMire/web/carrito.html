@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>P1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link href="./css/estilos_carrito.css" rel="stylesheet" type="text/css">
+    
+    </head>
+    
+    <body>
+        
+        <h2>Carrito</h2>
+        
+        <table class="carritoTable">
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Unidades</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Descipción Producto1</td>
+                    <td class="alineado">2</td>
+                    <td class="alineado">10,80€</td>
+                </tr>
+                <tr>
+                    <td>Descripción Producto2</td>
+                    <td class="alineado">1</td>
+                    <td class="alineado">6,30€</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Total:</td>
+                    <td class="alineado">17,10€</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                <td colspan="3" class="alineado">
+                    <a onclick="Cargar('productos.html','cuerpo')" class="button1">Continuar comprando</a>
+                    <a onclick="Cargar('resumen_pedido.html','cuerpo')" class="button1">Formalizar pedido</a>
+                    <a onclick="Cargar('usuario_login.html','cuerpo')" class="button1">Cerrar sesión</a>
+                </td>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <div class="cuerpo" id="cuerpo">
+        </div>
+
+    </body>
+</html>

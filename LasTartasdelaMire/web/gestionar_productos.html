@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>Gestion de productos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="./css/estilos_administracion.css" rel="stylesheet" type="text/css">
+        
+    </head>
+    <body>
+        <h2>Gestión de productos</h2>
+        
+        <table class="gestionproduTable">
+            <tr>
+                <td><b>Nombre Producto</b></td>
+                <td><b>Precio</b></td>
+                <td><b>Descripción</b></td>
+                <td><b>Stock</b></td>
+                <td><a onclick="Cargar('modificarProducto.html','cuerpo')" id="button3">Modificar producto</a></td>
+            </tr>
+            <tr>
+                <td>Tarta San Marcos</td>
+                <td>15.95</td>
+                <td>Una tarta delisiosa</td>
+                <td>5</td>
+                <td class="alineado"><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Tarta Carrot Cake</td>
+                <td>15.95</td>
+                <td>Una tarta rica rica</td>
+                <td>5</td>
+                <td class="alineado"><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>Tarta Corazón Sacher</td>
+                <td>15.95</td>
+                <td>Una tarta buenissima</td>
+                <td>5</td>
+                <td class="alineado"><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td colspan="5" class="alineado">
+                    <a onclick="Cargar('op_administrador.html','cuerpo')" class="button2">Atrás</a>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

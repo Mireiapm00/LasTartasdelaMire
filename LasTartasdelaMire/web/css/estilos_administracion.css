@@ -1,0 +1,129 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 08-mar-2020, 23:29:50
+    Author     : Mireia
+*/
+
+h2 {
+    
+    background-color:#e5e5e5;
+    padding: 3%;
+    width: 94%;
+    position: fixed;
+    /*border: 1px solid blue;*/
+    
+}
+
+.cuerpo1 {
+    padding-left: 40%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    line-height: 40pt;
+    margin-top: 10%;
+}
+
+#button {
+    border-color: #e5e5e5;
+    background-color: #e5e5e5;
+    height: 40px;
+    width: 13%;
+    font-size: 15px;
+    text-align: center;
+    margin-left: 8%;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.options {
+    padding-left: 13%;
+    padding-bottom: 5%;
+    padding-top: 20%;
+    line-height: 40pt;
+}
+
+.button1 {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    margin: 5px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 20%;
+    font-size: 18px;
+}
+
+.gestionusuTable {
+    width:  50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 20%;
+    border: 1px solid #dddddd;
+}
+
+.gestionusuTable td {
+    padding: 3%;
+}
+
+.button2 {
+    border: none;
+    outline: 0;
+    margin: 5px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 20%;
+    font-size: 18px;
+    padding: 1%;
+}
+
+#button3 {
+    border: none;
+    outline: 0;
+    padding: 2%;
+    margin: 5px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.gestionTable {
+    width:  50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 20%;
+    border: 1px solid #dddddd;
+}
+.gestionTable td {
+    padding: 3%;
+}
+
+.gestionproduTable {
+    width:  50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 20%;
+    border: 1px solid #dddddd;
+    line-height: 30pt;
+}
+
+.gestionproduTable td {
+    padding: 3%;
+}
+
+.alineado {
+    text-align: center;
+}
+
+.alineadoIzq {
+    text-align: left;
+}

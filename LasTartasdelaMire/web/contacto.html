@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>Contacto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./css/estilos_contacto.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h2>Contacta con nosotras</h2>
+        
+        
+        <div id="wrapper">
+            <div id="contenido">
+                <iframe id="imagen" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3078.0606075994415!2d-0.42685688512545206!3d39.51312177948035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd60450d03d31e81%3A0xb2d49176f911a805!2sUniversitat%20de%20Val%C3%A8ncia%3A%20Escola%20T%C3%A8cnica%20Superior%20d&#39;Enginyeria!5e0!3m2!1ses!2ses!4v1583090969403!5m2!1ses!2ses" width="400" height="300" style="border:0;" allowfullscreen=""></iframe>
+          
+                <b>Horario</b>
+                <hr>
+                De lunes a sábado: De 07:30h a 20:30h
+                Domingo: Cerrado (Sujeta a festividades)
+                <br><br><br>
+                <b>Datos de Contacto</b>
+                <hr>
+                Avinguda de l'Universitat, s/n, 46100 Burjassot, Valencia
+                Teléfono: 963 54 32 11 - info@lastartasdelamire.com
+                <br><br><br>
+                <b>Formulario de contacto</b>
+                <hr>
+                <p>
+                Por favor, rellene el siguiente formulario si desea realizar alguna pregunta o quiere aportar cualquier sugerencia.
+                Intentaremos responderle a la mayor brevedad posible.<br> Gracias.
+                </p>
+                <form action="http://www.uv.es" method="post" id="form">
+                    <table>
+                        <tr>
+                            <td><label class="label" for="nombre">Persona de contacto   </label></td>
+                            <td class="alineadoDer"><input class="input" type="text" name="nombre" id="nombre" maxlength="30" pattern="[A-Za-z]+" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="label" for="telefono">Tel&eacute;fono   </label></td>
+                            <td class="alineadoDer"><input class="input" type="tel" name="telefono" id="telefono" maxlength="30" pattern="[0-9]{9}" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="label" for="email">Correo Electr&oacute;nico   </label></td>
+                            <td class="alineadoDer"><input class="input" type="email" name="email" id="email" maxlength="30"  required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="label" for="descripcion">Comentarios</label></td>
+                            <td class="alineadoDer"><textarea name="comentarios" id="descripcion" cols="18"> </textarea></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input class="boton" type="submit" value="Enviar"></td>
+                        </tr>
+                    </table>
+
+                </form>
+                
+            </div>
+        </div>
+        
+        
+    </body>
+</html>

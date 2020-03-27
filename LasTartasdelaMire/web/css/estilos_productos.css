@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 08-mar-2020, 13:58:22
+    Author     : Mireia
+*/
+
+.titulo {
+    
+    background-color:#e5e5e5;
+    padding: 3%;
+    width: 94%;
+    position: fixed;
+    /*border: 1px solid blue;*/
+    
+}
+
+table {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+td {
+    padding-bottom: 5%;
+    /*border: 1px solid blue;*/
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+    
+}
+
+.card img {
+    width: 50%;
+}
+
+.precio {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+

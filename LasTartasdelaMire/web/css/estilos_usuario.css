@@ -1,0 +1,86 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29-feb-2020, 22:05:41
+    Author     : Mireia
+*/
+
+h2 {
+    
+    background-color:#e5e5e5;
+    padding: 3%;
+    width: 94%;
+    /*border: 1px solid blue;*/
+    
+}
+
+.cuerpo1 {
+    /*border: 1px solid blue;*/
+    padding-left: 40%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    line-height: 40pt;
+}
+
+
+.button0 {
+    border-color: #e5e5e5;
+    background-color: #e5e5e5;
+    height: 40px;
+    width: 13%;
+    font-size: 15px;
+    text-align: center;
+}
+
+.options {
+    padding-left: 25%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    line-height: 40pt;
+}
+
+.button1 {
+    border: none;
+    outline: 0;
+    padding: 1%;
+    margin: 5px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 20%;
+    font-size: 18px;
+    margin-left: 5%;
+}
+
+.cambiarDatosTable {
+    width:  50%;
+    margin-top: 1%;
+    margin-bottom: 10%;
+    margin-left: 20%;
+   /*border: 1px solid blue;*/
+}
+
+.cambiarDatosTable td {
+    padding: 3%;
+}
+
+.button3 {
+    border: none;
+    outline: 0;
+    padding: 2%;
+    margin: 5px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 20%;
+    font-size: 18px;
+}
+
+#botonesBar {
+    align-content: center;
+}

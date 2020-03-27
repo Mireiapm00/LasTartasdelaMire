@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>Resumen del pedido</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./css/estilos_carrito.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        
+        <h2>Resumen del pedido</h2>
+        
+        <div class="tag">
+            <h4>Información de envío</h4>
+            <p>
+            Enrique Bonet<br>
+            IRTIC<br>
+            Catedrático Jose Beltrán 2<br>
+            46980 Paterna<br>
+            </p>
+        </div>
+        
+         <table class="div_tabla">
+            <thead>
+                <tr class="alineadoIzq">
+                    <th>Descripción</th>
+                    <th>Unidades</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Descripción Producto1</td>
+                    <td>2</td>
+                    <td class="alineadoDer">10,80€</td>
+                </tr>
+                <tr>
+                    <td>Descripción Producto2</td>
+                    <td>1</td>
+                    <td class="alineadoDer">6,30€</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Total:</td>
+                    <td class="alineadoDer">17,10€</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                <td colspan="3" class="alineado">
+                    <a onclick="Cargar('check_pedido.html','cuerpo')" class="button2">Formalizar compra</a>
+                    <a onclick="Cargar('carrito.html','cuerpo')" class="button2"> Cancelar compra</a>
+                </td>
+                </tr>
+            </tfoot>
+         </table>
+        
+        
+        
+        <div class="cuerpo" id="cuerpo">
+        </div>
+    </body>
+</html>

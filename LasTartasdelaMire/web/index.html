@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>Práctica 1 - Tienda de Tartas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./js/libCapas.js"></script>
+        <!-- PONER AQUI SCRIPT DEL CARRITO -->
+        <link rel="icon" type="image/ico" href="./images/logos/icon.png" sizes="64x64">
+        <link href="./css/estilos.css" rel="stylesheet" type="text/css">
+        
+        <script>
+            function myFunction() {
+              var x = document.getElementById("myTopNav");
+              if (x.className === "topnav") {
+                x.className += " responsive";
+              } else {
+                x.className = "topnav";
+              }
+            }
+        </script>
+        
+    </head>
+    
+    <body onload="Cargar('inicio.html','cuerpo')">
+        <div class="topnav" id="myTopNav">
+                <a href="#inicio" onclick="Cargar('inicio.html','cuerpo')">Inicio</a>
+                <a href="#empresa" onclick="Cargar('empresa.html','cuerpo')">Empresa</a>
+                <a href="#contacto" onclick="Cargar('contacto.html','cuerpo')">Contacto</a>
+                <a href="#productos" onclick="Cargar('productos.html','cuerpo')">Productos</a>
+                <a href="#carrito" onclick="Cargar('carrito_login.html','cuerpo')">Carrito</a>
+                <a href="#usuario" onclick="Cargar('usuario_login.html','cuerpo')">Usuario</a>
+                <a href="#administracion" onclick="Cargar('administracion.html','cuerpo')">Administración</a>
+                
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars" style="font-size:48px;"></i>
+                </a>
+        </div>
+        <div class="cuerpo" id="cuerpo">
+        </div>
+        
+        <div class="footertable">
+            <div id="footer1">Síguenos en redes sociales:  
+            
+                <a href="https://www.facebook.com/" target="_blank"><img src="./images/logos/bfacebook.png" alt="facebook"> </a>
+                <a href="https://twitter.com/" target="_blank"><img src="./images/logos/btwitter.png" alt="twitter"></a>
+                <a href="https://www.instagram.com/" target="_blank"><img src="./images/logos/binstagram.png" alt="instagram"></a>
+                <a href="https://www.youtube.com/" target="_blank"><img src="./images/logos/byoutube.png" alt="youtube"></a>
+            </div>
+            
+        </div>
+        
+        
+    </body>
+</html>

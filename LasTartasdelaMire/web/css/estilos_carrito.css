@@ -1,0 +1,157 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-feb-2020, 12:23:24
+    Author     : arant
+*/
+
+h2 {
+    
+    background-color:#e5e5e5;
+    padding: 3%;
+    width: 94%;
+    position: fixed;
+    /*border: 1px solid blue;*/
+    
+}
+
+.cuerpo1 {
+    padding-left: 40%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    line-height: 40pt;
+    margin-top: 10%;
+}
+
+
+.button0 {
+    border-color: #e5e5e5;
+    background-color: #e5e5e5;
+    height: 40px;
+    width: 13%;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    padding: 1%;
+    margin-left: 2.5%;
+}
+
+
+.carritoTable{
+    width:  70%;
+    margin-top: 15%;
+    padding-left: 20%;
+}
+
+.tag {
+    border: 1px solid blue;
+    width: 20%;
+    margin-top: 10%;
+    margin-left: 15%;
+    padding-left: 5%;
+    border-color: #dddddd;
+}
+
+.div_tabla{
+    width:  70%;
+    margin-top: 7%;
+    margin-left: 15%;
+}
+
+
+.carritoTable td, .div_tabla td{
+  border: 1px solid #dddddd;
+  padding: 3%;
+}
+
+.button1 {
+    border: none;
+    outline: 0;
+    margin: 1%;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 30%;
+    font-size: 18px;
+    padding: 1%;
+}
+
+.button2 {
+    border: none;
+    outline: 0;
+    padding: 1%;
+    margin: 5px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 40%;
+    font-size: 18px;
+}
+
+.bodyCheckPedido {
+    margin-top: 15%;
+    margin: 10%;
+   /* border: 1px solid #dddddd;*/
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40%;
+    /*border: 1px solid green;*/
+}
+
+.alineado {
+    text-align: center;
+}
+.alineadoIzq {
+    text-align: left;
+}
+.alineadoDer {
+    text-align: right;
+}
+
+/**** registrarse.html ****/
+.registrarTable {
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 15%;
+    /*border: 1px solid green;*/
+    width: 70%;
+    line-height: 30pt;
+}
+.registrarTable td {
+    padding-right: 10%;
+    padding-left: 10%;
+    
+}
+
+#button2 {
+    border: none;
+    outline: 0;
+    padding: 1%;
+    margin: 5px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 20%;
+    font-size: 18px;
+    margin-top: 5%;
+}
+
+.gestionTable {
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 10%;
+    /*border: 1px solid green;*/
+    width: 70%;
+    line-height: 30pt;
+}
