@@ -11,9 +11,10 @@ and open the template in the editor.
 h2 {
     
     background-color:#e5e5e5;
-    padding: 3%;
-    width: 94%;
-    position: fixed;
+    padding: 2.5%;
+    margin: 0;
+    /*width: 94%;*/
+    /*position: fixed;*/
     
 }
 
@@ -28,7 +29,7 @@ img {
 }
 
 .logo {
-    width: 100%;
+    width: 70%;
     max-width: 100%;
 }
 
