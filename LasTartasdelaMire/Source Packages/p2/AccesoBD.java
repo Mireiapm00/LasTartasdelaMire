@@ -52,6 +52,17 @@ public class AccesoBD {
         return conexionBD != null;
     }
     
-    
+    public void cerrarConexionBD() {
+        if(conexionBD != null) {
+            try {
+                conexionBD.close();
+                conexionBD = null;
+            }
+            catch(Exception e) {
+                System.out.println("")
+            }
+        }
+        
+    }
     
 }
