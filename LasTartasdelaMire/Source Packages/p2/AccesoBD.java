@@ -32,7 +32,7 @@ public class AccesoBD {
     
     public void abrirConexionBD() {
         if(conexionBD == null){
-            String nombreConexionBD = "jdbc:mysql://localhost/NOMBREDB";
+            String nombreConexionBD = "jdbc:mysql://localhost/bdcakeshop";
             
             try {
                 //root y sin clave: usuario por defecto que crea XAMPP
