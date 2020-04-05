@@ -9,12 +9,9 @@ and open the template in the editor.
 */
 
 h2 {
-    
     background-color:#e5e5e5;
-    padding: 3%;
-    width: 94%;
-    /*border: 1px solid blue;*/
-    
+    padding: 2.5%;
+    margin: 0;
 }
 
 .cuerpo1 {
@@ -33,6 +30,9 @@ h2 {
     width: 13%;
     font-size: 15px;
     text-align: center;
+    margin-left: 2%;
+    padding: 1%;
+    cursor: pointer;
 }
 
 .options {
