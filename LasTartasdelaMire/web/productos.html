@@ -11,7 +11,10 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="./css/estilos_productos.css" rel="stylesheet" type="text/css">
     </head>
-    <body>
+    <body onload="cargaInicialCarrito()">
+        <script>
+            cargaInicialCarrito();
+        </script>
         <h2 class="titulo">Hecha un vistazo a nuestra tienda</h2>
         <table>
             <tr>
@@ -19,27 +22,48 @@ and open the template in the editor.
                     <div class="card">
                         <img src="./images/tartaSanMarcos.png" alt="Tarta San Marcos">
                         <h2>Tarta San Marcos</h2>
-                        <p class="precio">15.95€</p>
+                        <p class="precio">100.0€</p>
                         <p>Una tarta delisiosa</p>
-                        <p><button>Añadir al carrito</button></p>
+                        <!--<p>
+                            <span onclick="quitCant('numberLabel1')" class="labelCanti">-</span>
+                            <span id="numberLabel1">1</span>
+                            <span onclick="addCant('numberLabel1')" class="labelCanti">+</span>
+                        </p>-->
+                        <p>
+                            <button onclick="anadirProductoCarrito('id_producto1','Tarta San Marcos', '100.0');">Añadir al carrito</button>
+                        </p>
                     </div>
                 </td>
                 <td>
                     <div class="card">
                         <img src="./images/tartacarrotcake.png" alt="Tarta Carrot Cake">
                         <h2>Tarta Carrot Cake</h2>
-                        <p class="precio">15.95€</p>
+                        <p class="precio">100.0€</p>
                         <p>Una tarta rica rica</p>
-                        <p><button>Añadir al carrito</button></p>
+                        <!--<p>
+                            <span onclick="quitCant('numberLabel2')" class="labelCanti">-</span>
+                            <span id="numberLabel2">1</span>
+                            <span onclick="addCant('numberLabel2')" class="labelCanti">+</span>
+                        </p>-->
+                        <p>
+                            <button onclick="anadirProductoCarrito('id_producto2','Tarta Carrot Cake', '100.0');">Añadir al carrito</button>
+                        </p>
                     </div>
                 </td>
                 <td>
                     <div class="card">
                         <img src="./images/tartacorazonsacher.png" alt="Tarta corazon Sacher">
                         <h2>Tarta Corazón Sacher</h2>
-                        <p class="precio">15.95€</p>
+                        <p class="precio">100.0€</p>
                         <p>Una tarta buenissima</p>
-                        <p><button>Añadir al carrito</button></p>
+                        <!--<p>
+                            <span onclick="quitCant('numberLabel3')" class="labelCanti">-</span>
+                            <span id="numberLabel3">1</span>
+                            <span onclick="addCant('numberLabel3')" class="labelCanti">+</span>
+                        </p>-->
+                        <p>
+                            <button onclick="anadirProductoCarrito('id_producto3','Tarta Corazón Sacher', '100.0');">Añadir al carrito</button>
+                        </p>
                     </div>
                 </td>
             </tr>
@@ -48,27 +72,48 @@ and open the template in the editor.
                     <div class="card">
                         <img src="./images/tartacorazonyema.png" alt="Tarta corazon Yema">
                         <h2>Tarta Corazón Yema</h2>
-                        <p class="precio">15.95€</p>
+                        <p class="precio">100.0€</p>
                         <p>Una tarta perfecta para compartir</p>
-                        <p><button>Añadir al carrito</button></p>
+                        <!--<p>
+                            <span onclick="quitCant('id_producto4', 'numberLabel4')" class="labelCanti">-</span>
+                            <span id="numberLabel4">1</span>
+                            <span onclick="addCant('numberLabel4')" class="labelCanti">+</span>
+                        </p>-->
+                        <p>
+                            <button onclick="anadirProductoCarrito('id_producto4','Tarta Corazón Yema', '100.0');">Añadir al carrito</button>
+                        </p>
                     </div>
                 </td>
                 <td>
                     <div class="card">
                         <img src="./images/tartadelaabuela.png" alt="Tarta de la abuela">
                         <h2>Tarta de la Abuela</h2>
-                        <p class="precio">15.95€</p>
+                        <p class="precio">100.0€</p>
                         <p>Una tarta clásica deliciosa</p>
-                        <p><button>Añadir al carrito</button></p>
+                        <!--<p>
+                            <span onclick="quitCant('numberLabel5')" class="labelCanti">-</span>
+                            <span id="numberLabel5">1</span>
+                            <span onclick="addCant('numberLabel5')" class="labelCanti">+</span>
+                        </p>-->
+                        <p>
+                            <button onclick="anadirProductoCarrito('id_producto5','Tarta de la Abuela', '100.0');">Añadir al carrito</button>
+                        </p>
                     </div>
                 </td>
                 <td>
                     <div class="card">
                         <img src="./images/tartatiramisu.png" alt="Tarta tiramisu">
                         <h2>Tarta Tiramisu</h2>
-                        <p class="precio">15.95€</p>
+                        <p class="precio">100.0€</p>
                         <p>Una tarta al estilo italiano</p>
-                        <p><button>Añadir al carrito</button></p>
+                        <!--<p>
+                            <span onclick="quitCant('numberLabel6')" class="labelCanti">-</span>
+                            <span id="numberLabel6">1</span>
+                            <span onclick="addCant('numberLabel6')" class="labelCanti">+</span>
+                        </p>-->
+                        <p>
+                            <button onclick="anadirProductoCarrito('id_producto6','Tarta Tiramisu', '100.0');">Añadir al carrito</button>
+                        </p>
                     </div>
                 </td>
             </tr>

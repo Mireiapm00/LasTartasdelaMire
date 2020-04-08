@@ -15,7 +15,7 @@ and open the template in the editor.
 }
 
 table {
-    margin-top: 10%;
+    margin-top: /*10%*/2.5%;
     margin-bottom: 5%;
     margin-left: 5%;
     margin-right: 5%;
@@ -38,23 +38,31 @@ td {
 }
 
 .precio {
-  color: grey;
-  font-size: 22px;
+    color: grey;
+    font-size: 22px;
 }
 
 .card button {
-  border: none;
-  outline: 0;
-  padding: 12px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
 }
 
 .card button:hover {
   opacity: 0.7;
 }
 
+.labelCanti {
+    color: white;
+    font-size: 22px;
+    padding: 6px;
+    background-color: #000;
+    cursor: pointer;
+    text-align: center;
+}

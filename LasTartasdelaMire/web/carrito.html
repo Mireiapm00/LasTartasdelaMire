@@ -14,43 +14,16 @@ and open the template in the editor.
     
     </head>
     
-    <body>
+    <body onload="crearProductosCarritoPage()">
+        
+        <script>
+            crearProductosCarritoPage();
+        </script>
         
         <h2>Carrito</h2>
         
-        <table class="carritoTable">
-            <thead>
-                <tr>
-                    <th>Descripción</th>
-                    <th>Unidades</th>
-                    <th>Precio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Descipción Producto1</td>
-                    <td class="alineado">2</td>
-                    <td class="alineado">10,80€</td>
-                </tr>
-                <tr>
-                    <td>Descripción Producto2</td>
-                    <td class="alineado">1</td>
-                    <td class="alineado">6,30€</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Total:</td>
-                    <td class="alineado">17,10€</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                <td colspan="3" class="alineado">
-                    <a onclick="Cargar('productos.html','cuerpo')" class="button1">Continuar comprando</a>
-                    <a onclick="Cargar('resumen_pedido.html','cuerpo')" class="button1">Formalizar pedido</a>
-                    <a onclick="Cargar('usuario_login.html','cuerpo')" class="button1">Cerrar sesión</a>
-                </td>
-                </tr>
-            </tfoot>
+        <table class="carritoTable" id="carritoTable" style="text-align: center;">
+            
         </table>
         
         <div class="cuerpo" id="cuerpo">

@@ -18,8 +18,6 @@ body {
 
 .topnav {
     background-color: #965E94;
-    /*position: fixed;*/
-    /*width: 100%;*/
     top: 0;
     overflow: hidden;
 }
@@ -49,12 +47,6 @@ body {
     background-color: #CC99CC /*#EED8EE*/;
     color: black;
 }
-/*
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-*/
 
 .cuerpo {
     /*padding-top: 50px;*/
