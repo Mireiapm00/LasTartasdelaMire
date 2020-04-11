@@ -11,6 +11,7 @@ package p2;
  */
 public class ProductoBD {
     private int id;
+    private String nombre;
     private String descripcion;
     private float precio;
     private int stock;
@@ -23,7 +24,15 @@ public class ProductoBD {
     public void setId(int id) {
         this.id = id;
     }
+    
+    public String getNombre() {
+        return nombre;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     public String getDescripcion() {
         return descripcion;
     }
@@ -55,6 +64,5 @@ public class ProductoBD {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
     
 }

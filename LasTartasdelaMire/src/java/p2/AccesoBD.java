@@ -85,10 +85,11 @@ public class AccesoBD {
             
             while (resultados.next()){
                 producto = new ProductoBD(); //campos que dependeran de la consulta realizada y campos de la BBDD
-                producto.setId(resultados.getInt("codigo"));
+                producto.setId(resultados.getInt("id"));
+                producto.setNombre(resultados.getString("nombre"));
                 producto.setDescripcion(resultados.getString("descripcion"));
                 producto.setPrecio(resultados.getFloat("precio"));
-                producto.setStock(resultados.getInt("existencias"));
+                producto.setStock(resultados.getInt("stock"));
                 producto.setImagen(resultados.getString("imagen"));
                 productos.add(producto);
                 
