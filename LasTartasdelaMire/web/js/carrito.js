@@ -8,37 +8,6 @@ var carrito = null;
 var canti = 0;  
 
 
-function devuelveCantidadCarrito() {
-    var i = 0;
-    for(p in carrito){
-        i++;
-    }
-    return i;
-}
-
-function devuelveCantidadTotalCarrito() {
-    var i = 0;
-    for(p in carrito){
-        i += carrito[p].cantidad;
-    }
-    return i;
-}
-
-
-function cargaInicialCarrito() {
-    carrito = JSON.parse(localStorage.getItem("carrito"));
-    
-    /*console.log("CARGA INICIAL: ");
-    for(p in carrito){
-        console.log("ID: " + carrito[p].id_producto + " NOMBRE: " + carrito[p].nombre + " CANTIDAD: " + carrito[p].cantidad);
-    }*/
-    
-    if(carrito === null){
-        carrito = new Object();
-        //console.log("Carrito creado");
-    }    
-}
-
 function actualizarCarrito() {
     localStorage.clear();
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -49,6 +18,30 @@ function actualizarCarrito() {
     }*/
 }
 
+function cargaInicialCarrito() {
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+    canti = 0;
+    
+    if(carrito === null){
+        carrito = new Object();
+    }    
+    else {
+        var p;
+        for(p in carrito){
+            canti += carrito[p].cantidad;
+        }
+    }
+    document.getElementById('carrito').innerHTML = " (" + canti + ")";
+}
+
+function devuelveCantidadTotalCarrito() {
+    var total = 0, p;
+    for(p in carrito){
+        total += carrito[p].cantidad;
+    }
+    return total;
+}
+
 function anadirProductoCarrito (id_producto, nombre, precio) {
 
     var p, encontrado = 0;
@@ -57,8 +50,6 @@ function anadirProductoCarrito (id_producto, nombre, precio) {
         if(p === id_producto) {
             encontrado = 1;
             carrito[p].cantidad++;
-            canti++;
-            document.getElementById('carrito').innerHTML = " (" + carrito[p].cantidad++; + ")";
         }
     }
 
@@ -70,32 +61,68 @@ function anadirProductoCarrito (id_producto, nombre, precio) {
         product.cantidad = 1;
 
         carrito[id_producto] = product;
-        canti++;
-        document.getElementById('carrito').innerHTML = " (" + canti + ")";
     }
-
+    canti++;
     actualizarCarrito();
+    
+    document.getElementById('carrito').innerHTML = " (" + canti + ")";
+}
+
+function mostrarContenidoCarritoTable(){
+    var html = "", i = 0, p;
+    
+    //html += "<table>";Q
+    
+    if(canti !== 0){
+        html += "<thead><tr><th>Descripción</th><th>Unidades</th><th>Precio</th><th>Modificar Cantidad</th></tr></thead>";
+        
+        for(p in carrito){
+            html += "<tr>";
+            html += "<td>" + carrito[p].nombre + "</td>";
+            html += "<td id='cantidad" +i+ "'> "+ carrito[p].cantidad + "</td>";
+            html += "<td>" + carrito[p].precio + "</td>";
+            html += "<td><input class=\"button1\" type='button' value='-' id='fila" + i + "' onclick='modificarCantidad(\"-\", \"" + p + "\")'><input class=\"button1\" type='button' value='+' onclick='modificarCantidad(\"+\", \"" + p + "\")'><input class=\"button1\" type='button' value='x' onclick='eliminarFila(this, \"" + p + "\")'></td>";
+            html += "</tr>";
+            i++;
+            //canti = canti + carrito[p].cantidad;Q
+        }
+        
+        html += "<tfoot>";
+        html += "<tr>";
+        html += "<td colspan='4' class='alineado'>";
+        html += "<a onclick=\"Cargar('productos.html','cuerpo')\" class=\"button1\">Continuar comprando</a>";
+        html += "<a onclick=\"Cargar('resumen_pedido.html','cuerpo')\" class=\"button1\">Formalizar pedido</a>";
+        html += "<a onclick=\"Cargar('usuario_login.html','cuerpo')\" class=\"button1\">Cerrar sesión</a>";
+        html += "</td>";
+        html += "</tr></tfoot>";
+        
+    }else {
+        html += "<tr><td><img src='images/logos/iconocarrito.png' alt='Carrito'/></td></tr>";
+        html += "<tr><td>El carrito está vacio</td></tr>";
+    }
+    
+    //html += "</table>";Q
+    
+    return html;
 }
 
 function crearProductosCarritoPage (){
-    
     var html = "";
     
-    html += "<table>";
+    //html += "<table>";Q
     
-    if(devuelveCantidadCarrito() !== 0){
-        
+    if(canti !== 0){
         html += mostrarContenidoCarritoTable();
-        
-        document.getElementById("carritoTable").innerHTML = html;
-        document.getElementById("carrito").innerHTML = " (" + canti + ")";
     }
     else {
         html += "<tr><td><img src='images/logos/iconocarrito.png' alt='Carrito'/></td></tr>";
         html += "<tr><td>El carrito está vacio</td></tr>";
-        html += "</table>";
-        document.getElementById("carritoTable").innerHTML = html;
+        //html += "</table>";Q
+        // document.getElementById("carritoTable").innerHTML = html;Q
     }
+    
+    document.getElementById("carritoTable").innerHTML = html;
+        document.getElementById("carrito").innerHTML = " (" + canti + ")";
     
 }
 
@@ -113,44 +140,6 @@ function eliminarFila(row, id_producto) {
     
 }
 
-function mostrarContenidoCarritoTable(){
-    var html="", i = 0, p;
-    canti = 0;
-    
-    html += "<table>";
-    if(devuelveCantidadCarrito() !== 0){
-        html += "<thead><tr><th>Descripción</th><th>Unidades</th><th>Precio</th><th>Modificar Cantidad</th></tr></thead>";
-        
-        for(p in carrito){
-            html += "<tr>";
-            html += "<td>" + carrito[p].nombre + "</td>";
-            html += "<td id='cantidad" +i+ "'> "+ carrito[p].cantidad + "</td>";
-            html += "<td>" + carrito[p].precio + "</td>";
-            html += "<td><input class=\"button1\" type='button' value='-' id='fila" + i + "' onclick='modificarCantidad(\"-\", \"" + p + "\")'><input class=\"button1\" type='button' value='+' onclick='modificarCantidad(\"+\", \"" + p + "\")'><input class=\"button1\" type='button' value='x' onclick='eliminarFila(this, \"" + p + "\")'></td>";
-            html += "</tr>";
-            i++;
-            canti = canti + carrito[p].cantidad;
-        }
-        
-        html += "<tfoot>";
-        html += "<tr>";
-        html += "<td colspan='4' class='alineado'>";
-        html += "<a onclick=\"Cargar('productos.html','cuerpo')\" class=\"button1\">Continuar comprando</a>";
-        html += "<a onclick=\"Cargar('resumen_pedido.html','cuerpo')\" class=\"button1\">Formalizar pedido</a>";
-        html += "<a onclick=\"Cargar('usuario_login.html','cuerpo')\" class=\"button1\">Cerrar sesión</a>";
-        html += "</td>";
-        html += "</tr></tfoot></table>";
-        
-    }else {
-        html += "<tr><td><img src='images/logos/iconocarrito.png' alt='Carrito'/></td></tr>";
-        html += "<tr><td>El carrito está vacio</td></tr>";
-    }
-    
-    html += "</table>";
-    
-    return html;
-}
-
 function modificarCantidad(tipo, id_producto) {
     var p, i = 0;
         
@@ -159,33 +148,43 @@ function modificarCantidad(tipo, id_producto) {
             
             if(tipo.toString() === "-"){
                 carrito[p].cantidad--;
-                //console.log("<br>CantidadActual " + carrito[p].cantidad.toString() + " Tipo " + tipo + "CantiACTUALIZADA" + carrito[p].cantidad);
-                document.getElementById('cantidad'+i).innerHTML = carrito[p].cantidad;
                 canti--;
-                document.getElementById("carrito").innerHTML = " (" + canti + ")";
+                
+                //document.getElementById('cantidad'+i).innerHTML = carrito[p].cantidad;Q
+                
+                //document.getElementById("carrito").innerHTML = " (" + canti + ")";Q
                 
                 if(parseInt(carrito[p].cantidad) === 0){
                     delete carrito[p];
-                    actualizarCarrito();
-                    var html = mostrarContenidoCarritoTable();
-                    document.getElementById("carritoTable").innerHTML = html;
+                    //actualizarCarrito();Q
+                    //var html = mostrarContenidoCarritoTable();Q
+                    //document.getElementById("carritoTable").innerHTML = html;Q
                 }
                 
             }
-            else if(tipo.toString() === "+") {
-                carrito[p].cantidad++;
+            else {
+                
+                if(tipo.toString() === "+") {
+                    carrito[p].cantidad++;
+                    canti++;
+                }
+                else {
+                    if(tipo.toString() === "x"){
+                        delete(carrito[p]);
+                        canti = devuelveCantidadTotalCarrito();
+                    }
+                }
                 //console.log("CantidadActual " + carrito[p].cantidad.toString() + " Tipo " + tipo + "CantiACTUALIZADA" + carrito[p].cantidad);
-                document.getElementById('cantidad'+i).innerHTML = carrito[p].cantidad;
-                canti++;
-                document.getElementById("carrito").innerHTML = " (" + canti + ")";
+                //document.getElementById('cantidad'+i).innerHTML = carrito[p].cantidad;Q
+                //document.getElementById("carrito").innerHTML = " (" + canti + ")";Q
             }
             break;            
         }
-        i++;
+        //i++;Q
     }
     
     actualizarCarrito();
-    
+    crearProductosCarritoPage();
 }
 
 
