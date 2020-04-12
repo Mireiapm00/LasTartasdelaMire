@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="./css/estilos_productos.css" rel="stylesheet" type="text/css">
-        <title>Productos</title>
+        <title>&nbsp;</title>
     </head>
     <body>
         <%
@@ -38,8 +38,8 @@
                         <div class="card">
                             <img src=<%=imagen%> alt=<%=nombre%>>
                             <h2><%=nombre%></h2>
-                            <p class="precio"><%=precio%></p>
-                            <p><%=descripcion%>(<%=existencias%> en stock, infinitas...)</p>
+                            <p class="precio"><%=precio%>€</p>
+                            <p><%=descripcion%></p><p>(<%=existencias%> en stock, infinitas...)</p>
                             <p>
                                 <button onclick="anadirProductoCarrito('id_producto<%=codigo%>','<%=nombre%>', '<%=precio%>');">Añadir al carrito</button>
                             </p>

@@ -100,5 +100,70 @@ public class AccesoBD {
         }
         return productos;
     }
+
+    boolean comprobarUsuarioBD(String usuario, String clave) {
+        abrirConexionBD();
+        
+        ResultSet resultados = null;
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "SELECT * FROM `usuarios` WHERE usuario='" + usuario + "' and password='" + clave + "'";
+            resultados = s.executeQuery(con);
+            if(resultados.next()){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch(Exception e){
+            System.out.println("No se ha completado la petición");
+            return false;
+        }
+        
+    }
+
+    boolean comprobarUsuarioAdminBD(String usuario, String clave) {
+        abrirConexionBD();
+        
+        ResultSet resultados = null;
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "SELECT * FROM administracion WHERE usuario='" + usuario + "' and password='" + clave + "'";
+            resultados = s.executeQuery(con);
+            if(resultados.next()){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch(Exception e){
+            System.out.println("No se ha completado la petición");
+            return false;
+        }
+    }
+    
+    public ResultSet obtenerUsuarioBD(String usuario){
+        abrirConexionBD();
+
+        ResultSet resultados = null;
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "SELECT id, nombre, apellidos, tlf, poblacion, provincia, cp, usuario, domicilio " 
+                    + " FROM usuarios WHERE usuario=\"" + usuario + "\"";
+            resultados = s.executeQuery(con);
+        }
+        catch(Exception e){
+            System.out.println("Error al completar la consulta");
+        }
+        
+        System.out.print(resultados);
+        
+        return resultados;
+    }
     
 }
