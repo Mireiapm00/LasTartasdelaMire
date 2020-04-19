@@ -34,7 +34,7 @@
         
         <h2>Usuari@: <%=nombre%></h2>
         
-        <!-- MOSTRAR INFO DEL USUARIO -->
+        <!-- MOSTRAR INFO DEL USUARIO EN CUADRITO MONO -->
         
         <div class="options">
             <a onclick="Cargar('cambiar_datos.html','cuerpo')" class="button1">Cambiar datos</a>

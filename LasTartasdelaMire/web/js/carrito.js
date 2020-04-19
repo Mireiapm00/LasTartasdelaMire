@@ -90,9 +90,11 @@ function mostrarContenidoCarritoTable(){
         html += "<tfoot>";
         html += "<tr>";
         html += "<td colspan='4' class='alineado'>";
-        html += "<a onclick=\"Cargar('productos.html','cuerpo')\" class=\"button1\">Continuar comprando</a>";
+        html += "<a onclick=\"Cargar('productos.jsp','cuerpo')\" class=\"button1\">Continuar comprando</a>";
         html += "<a onclick=\"Cargar('resumen_pedido.html','cuerpo')\" class=\"button1\">Formalizar pedido</a>";
-        html += "<a onclick=\"Cargar('usuario_login.html','cuerpo')\" class=\"button1\">Cerrar sesión</a>";
+        html += "<form method=\"post\" onsubmit=\"ProcesarForm(this, 'CerrarSesion', 'cuerpo');return false\">";
+        html += "<input type=\"submit\" class=\"button1\" value=\"Cerrar sesión\">";
+        html += "</form>";
         html += "</td>";
         html += "</tr></tfoot>";
         
@@ -192,15 +194,15 @@ function formalizarCompra() {
     
     var html = mostrarContenidoCarritoTable();
     
+    //ojo HAY QUE CAMBIAR ESTA FUNCTION....
+    
     console.log(html + document.getElementById("div_tabla"));
     
     html += "<tfoot>";
     html += "<tr><td colspan='' class='alineado'>";
     html += "<a onclick='Cargar('check_pedido.html','cuerpo')' class='button2'>Formalizar compra</a>";
-    html += "<a onclick='Cargar('carrito.html','cuerpo')' class='button2'> Cancelar compra</a>";
+    html += "<a onclick='Cargar('carrito.jsp','cuerpo')' class='button2'> Cancelar compra</a>";
     html += "</td></tr></tfoot>";
-    
-    
     
     document.getElementById("div_tabla").innerHTML = html;
     

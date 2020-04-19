@@ -42,7 +42,15 @@ public class LoginTienda extends HttpServlet {
             
             if(con.comprobarUsuarioBD(usuario, clave)){
                 sesion.setAttribute("usuario", usuario);
-                response.sendRedirect("op_usuario.jsp");
+                String from = (String)sesion.getAttribute("from");
+                if(from.equals("carrito")){
+                    response.sendRedirect("carrito.jsp");
+                    sesion.removeAttribute("from");
+                }
+                else {
+                    response.sendRedirect("op_usuario.jsp");
+                }
+                    
             }
             else { //usuario/clave no existe en BD
                 if(con.comprobarUsuarioAdminBD(usuario, clave)){
