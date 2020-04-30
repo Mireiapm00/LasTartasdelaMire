@@ -7,6 +7,7 @@ package p2;
  */
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,9 +46,24 @@ public class ProcesarPedido extends HttpServlet {
         JsonReader jsonReader = Json.createReader(new StringReader(carritoJSON));
         JsonObject jobj = jsonReader.readObject();
         
-        System.out.println(carritoJSON);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println(jobj);
+            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+            
+        }
         
-        if(jobj.size()> 0){
+        
+        /*if(jobj.size()> 0){
             JsonParser jsonParser = Json.createParser(new StringReader(carritoJSON));
             
             while(jsonParser.hasNext()){
@@ -55,7 +72,9 @@ public class ProcesarPedido extends HttpServlet {
                 if(e == Event.KEY_NAME){
                     indice = jsonParser.getString();
                                         
-                    if(indice.contains("id_producto")){
+                    //if(indice.contains("id_producto")){
+                    if(!indice.equals("id_producto") && !indice.equals("nombre") &&
+!indice.equals("cantidad") && !indice.equals("precio")){
                         ProductoBD nuevo = new ProductoBD();
                         JsonObject prod = jobj.getJsonObject(indice);
                         
@@ -65,12 +84,36 @@ public class ProcesarPedido extends HttpServlet {
                         nuevo.setStock(Integer.parseInt(prod.get("stock").toString()));
                         
                         carrito.add(nuevo);
-                        System.out.println(carrito);
                     }
                 }
             }
         }
         
+        HttpSession sesion = request.getSession(true);
+        sesion.setAttribute("carrito", carrito);
+        String usuario = (String) sesion.getAttribute("usuario");
+        
+        AccesoBD con = new AccesoBD();
+        boolean ok = true;
+        
+        for(ProductoBD p: carrito){
+          
+            if(p.getStock() > con.obtenerStockProductoBD(p.getId())){
+                ok = false;
+            }
+        }
+        
+        if(ok){
+            if(usuario != null)
+                response.sendRedirect("resguardo.jsp");
+            else {
+                response.sendRedirect("usuario_login.jsp");
+            }
+        }
+        else {
+            sesion.setAttribute("mensajeProducto", "Algunos productos del carrito están agotados");
+        }
+        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
