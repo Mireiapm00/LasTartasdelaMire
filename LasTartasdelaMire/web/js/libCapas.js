@@ -64,6 +64,8 @@ function Cargar(url, capa)
                                                 
 function CargarForm(url, capa, valores)
 {
+        document.write(url + " " + capa + " Valores: " + valores);
+        
 	var contenido = document.getElementById(capa);
 	var conexion = nuevaConexion();
 	conexion.open("POST", url, true);
@@ -76,7 +78,8 @@ function CargarForm(url, capa, valores)
 		}
 	}
 	conexion.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=utf-8');
-	conexion.send(valores);
+	/*document.write(valores);*/
+        conexion.send(valores);
 } 
 
 function ProcesarForm(formulario, url, capa)

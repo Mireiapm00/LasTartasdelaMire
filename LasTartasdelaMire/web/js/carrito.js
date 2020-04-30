@@ -70,9 +70,7 @@ function anadirProductoCarrito (id_producto, nombre, precio) {
 
 function mostrarContenidoCarritoTable(){
     var html = "", i = 0, p;
-    
-    //html += "<table>";Q
-    
+        
     if(canti !== 0){
         html += "<thead><tr><th>Descripción</th><th>Unidades</th><th>Precio</th><th>Modificar Cantidad</th></tr></thead>";
         
@@ -84,14 +82,14 @@ function mostrarContenidoCarritoTable(){
             html += "<td><input class=\"button1\" type='button' value='-' id='fila" + i + "' onclick='modificarCantidad(\"-\", \"" + p + "\")'><input class=\"button1\" type='button' value='+' onclick='modificarCantidad(\"+\", \"" + p + "\")'><input class=\"button1\" type='button' value='x' onclick='eliminarFila(this, \"" + p + "\")'></td>";
             html += "</tr>";
             i++;
-            //canti = canti + carrito[p].cantidad;Q
         }
         
         html += "<tfoot>";
         html += "<tr>";
         html += "<td colspan='4' class='alineado'>";
         html += "<a onclick=\"Cargar('productos.jsp','cuerpo')\" class=\"button1\">Continuar comprando</a>";
-        html += "<a onclick=\"Cargar('resumen_pedido.html','cuerpo')\" class=\"button1\">Formalizar pedido</a>";
+        html += "<a onclick=\"ProcesarCarrito(carrito,'ProcesarPedido','cuerpo')\" class=\"button1\">Formalizar pedido</a>";
+        //html += "<a onclick=\"Cargar('resumen_pedido.html','cuerpo')\" class=\"button1\">Formalizar pedido</a>";
         html += "<form method=\"post\" onsubmit=\"ProcesarForm(this, 'CerrarSesion', 'cuerpo');return false\">";
         html += "<input type=\"submit\" class=\"button1\" value=\"Cerrar sesión\">";
         html += "</form>";
@@ -102,16 +100,12 @@ function mostrarContenidoCarritoTable(){
         html += "<tr><td><img src='images/logos/iconocarrito.png' alt='Carrito'/></td></tr>";
         html += "<tr><td>El carrito está vacio</td></tr>";
     }
-    
-    //html += "</table>";Q
-    
+        
     return html;
 }
 
 function crearProductosCarritoPage (){
     var html = "";
-    
-    //html += "<table>";Q
     
     if(canti !== 0){
         html += mostrarContenidoCarritoTable();
@@ -119,12 +113,10 @@ function crearProductosCarritoPage (){
     else {
         html += "<tr><td><img src='images/logos/iconocarrito.png' alt='Carrito'/></td></tr>";
         html += "<tr><td>El carrito está vacio</td></tr>";
-        //html += "</table>";Q
-        // document.getElementById("carritoTable").innerHTML = html;Q
     }
     
     document.getElementById("carritoTable").innerHTML = html;
-        document.getElementById("carrito").innerHTML = " (" + canti + ")";
+    document.getElementById("carrito").innerHTML = " (" + canti + ")";
     
 }
 
@@ -143,7 +135,7 @@ function eliminarFila(row, id_producto) {
 }
 
 function modificarCantidad(tipo, id_producto) {
-    var p, i = 0;
+    var p;
         
     for(p in carrito){
         if(p === id_producto.toString()) {
@@ -151,16 +143,9 @@ function modificarCantidad(tipo, id_producto) {
             if(tipo.toString() === "-"){
                 carrito[p].cantidad--;
                 canti--;
-                
-                //document.getElementById('cantidad'+i).innerHTML = carrito[p].cantidad;Q
-                
-                //document.getElementById("carrito").innerHTML = " (" + canti + ")";Q
-                
+                                
                 if(parseInt(carrito[p].cantidad) === 0){
                     delete carrito[p];
-                    //actualizarCarrito();Q
-                    //var html = mostrarContenidoCarritoTable();Q
-                    //document.getElementById("carritoTable").innerHTML = html;Q
                 }
                 
             }
@@ -176,13 +161,9 @@ function modificarCantidad(tipo, id_producto) {
                         canti = devuelveCantidadTotalCarrito();
                     }
                 }
-                //console.log("CantidadActual " + carrito[p].cantidad.toString() + " Tipo " + tipo + "CantiACTUALIZADA" + carrito[p].cantidad);
-                //document.getElementById('cantidad'+i).innerHTML = carrito[p].cantidad;Q
-                //document.getElementById("carrito").innerHTML = " (" + canti + ")";Q
             }
             break;            
         }
-        //i++;Q
     }
     
     actualizarCarrito();

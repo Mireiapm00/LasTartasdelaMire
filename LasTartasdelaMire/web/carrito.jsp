@@ -21,7 +21,6 @@
             response.sendRedirect("carrito_login.jsp");
         }
         else {
-            
         %>
             <h2>Carrito</h2>
         

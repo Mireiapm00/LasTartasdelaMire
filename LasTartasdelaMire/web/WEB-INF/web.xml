@@ -8,6 +8,10 @@
         <servlet-name>CerrarSesion</servlet-name>
         <servlet-class>p2.CerrarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesarPedido</servlet-name>
+        <servlet-class>p2.ProcesarPedido</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginTienda</servlet-name>
         <url-pattern>/LoginTienda</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
         <url-pattern>/CerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesarPedido</servlet-name>
+        <url-pattern>/ProcesarPedido</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

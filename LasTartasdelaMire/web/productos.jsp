@@ -41,7 +41,7 @@
                             <p class="precio"><%=precio%>€</p>
                             <p><%=descripcion%></p><p>(<%=existencias%> en stock, infinitas...)</p>
                             <p>
-                                <button onclick="anadirProductoCarrito('id_producto<%=codigo%>','<%=nombre%>', '<%=precio%>');">Añadir al carrito</button>
+                                <button onclick="anadirProductoCarrito('<%=codigo%>','<%=nombre%>', '<%=precio%>');">Añadir al carrito</button>
                             </p>
                         </div>
                     </td>
