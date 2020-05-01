@@ -21,9 +21,16 @@
             response.sendRedirect("carrito_login.jsp");
         }
         else {
+            String mensajeP = (String) session.getAttribute("mensajeProducto");
+            if(mensajeP == null){
+                mensajeP = "";
+            }
+            else{
+                session.removeAttribute("mensajeProducto");
+            }
         %>
             <h2>Carrito</h2>
-        
+            <h4><%=mensajeP%></h4>
             <table class="carritoTable" id="carritoTable" style="text-align: center;">
                 <script>
                     crearProductosCarritoPage();

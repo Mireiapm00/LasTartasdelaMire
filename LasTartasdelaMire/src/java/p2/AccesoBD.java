@@ -161,13 +161,32 @@ public class AccesoBD {
             System.out.println("Error al completar la consulta");
         }
         
-        System.out.print(resultados);
+        //System.out.print(resultados);
         
         return resultados;
     }
 
-    int obtenerStockProductoBD(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    int obtenerStockProductoBD(int id) throws SQLException {
+        abrirConexionBD();
+        int stock = 0;
+        
+        ResultSet resultados = null;
+        try{
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "SELECT stock FROM productos WHERE id=" + id + ";";
+            resultados = s.executeQuery(con);
+        }
+        catch (Exception e){
+            System.out.println("Error al completar la consulta");
+        }
+        
+        if(resultados != null){
+            resultados.next();
+            stock = resultados.getInt("stock");
+        }
+        
+        return stock;
     }
     
 }

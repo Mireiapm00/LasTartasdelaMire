@@ -14,6 +14,7 @@ public class ProductoBD {
     private String nombre;
     private String descripcion;
     private float precio;
+    private int cantidad;
     private int stock;
     private String imagen;
 
@@ -47,6 +48,14 @@ public class ProductoBD {
 
     public void setPrecio(float precio) {
         this.precio = precio;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public int getStock() {
