@@ -29,7 +29,7 @@
             
         %>
                 <div class="cuerpo1">
-                    <form name="usuarioLogin" method="post" onsubmit="ProcesarForm(this, 'LoginTienda', 'cuerpo');return false">
+                    <form name="usuarioLogin" method="post" onsubmit="ProcesarForm(this, 'LoginUsuario', 'cuerpo');return false">
                         <table>
                             <tr> 
                                 <td><label for="usuario">Usuario </label></td>

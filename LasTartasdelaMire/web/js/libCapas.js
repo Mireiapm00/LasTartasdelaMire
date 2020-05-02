@@ -68,7 +68,7 @@ function CargarForm(url, capa, valores)
 	var conexion = nuevaConexion();
 	conexion.open("POST", url, true);
 	conexion.onreadystatechange=function()
-	{ 
+	{   
 		if((conexion.readyState == 4) && (conexion.status == 200))
 		{
 			contenido.innerHTML = conexion.responseText;
@@ -99,7 +99,7 @@ function ProcesarForm(formulario, url, capa)
 
 function ProcesarCarrito(carrito, url, capa)
 {
-	var valores="carrito=" + JSON.stringify(carrito);
+	var valores = "carrito=" + JSON.stringify(carrito);
 	CargarForm(url, capa, valores);
 }
 			

@@ -20,16 +20,7 @@
             
             infoUsuario.next();
             
-            int id = infoUsuario.getInt("id");
-            String nombre = infoUsuario.getString("nombre");
-            String apellidos = infoUsuario.getString("apellidos");
-            int tlf = infoUsuario.getInt("tlf");
-            String poblacion = infoUsuario.getString("poblacion");
-            String provincia = infoUsuario.getString("provincia");
-            int cp = infoUsuario.getInt("cp");
-            String usuario = infoUsuario.getString("usuario");
-            String domicilio = infoUsuario.getString("domicilio");
-            
+            String nombre = infoUsuario.getString("nombre");    
         %>
         
         <h2>Usuari@: <%=nombre%></h2>
@@ -37,7 +28,7 @@
         <!-- MOSTRAR INFO DEL USUARIO EN CUADRITO MONO -->
         
         <div class="options">
-            <a onclick="Cargar('cambiar_datos.html','cuerpo')" class="button1">Cambiar datos</a>
+            <a onclick="Cargar('cambiar_datos.jsp','cuerpo')" class="button1">Cambiar datos</a>
             <a onclick="Cargar('gestionar_pedidos.html','cuerpo')" class="button1"> Gestionar pedidos</a>
             <form method="post" onsubmit="ProcesarForm(this, 'CerrarSesion', 'cuerpo');return false">
                 <input type="submit" class="button1" value="Cerrar sesión">

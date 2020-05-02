@@ -12,6 +12,14 @@
         <servlet-name>ProcesarPedido</servlet-name>
         <servlet-class>p2.ProcesarPedido</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginAdmin</servlet-name>
+        <servlet-class>p2.LoginAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginUsuario</servlet-name>
+        <servlet-class>p2.LoginUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginTienda</servlet-name>
         <url-pattern>/LoginTienda</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>ProcesarPedido</servlet-name>
         <url-pattern>/ProcesarPedido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginAdmin</servlet-name>
+        <url-pattern>/LoginAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginUsuario</servlet-name>
+        <url-pattern>/LoginUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

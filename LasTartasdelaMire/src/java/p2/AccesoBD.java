@@ -121,9 +121,77 @@ public class AccesoBD {
             System.out.println("No se ha completado la petición");
             return false;
         }
-        
     }
+    
+    
+    public List<UsuarioBD> obtenerUsuariosGestionBD(){
+        abrirConexionBD();
+        
+        ArrayList<UsuarioBD> usuarios = new ArrayList<>();
+        UsuarioBD usuario;
+        
+        ResultSet resultados = null;
+        
+        try{
+            String con;
+            Statement s = conexionBD.createStatement();
+            
+            con = "SELECT usuario, password FROM usuarios";
+            resultados = s.executeQuery(con);
+            
+            while(resultados.next()){
+                usuario = new UsuarioBD();
+                usuario.setPassword(resultados.getString("password"));
+                usuario.setUsuario(resultados.getString("usuario"));
+                usuarios.add(usuario);
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error ejecutando la consulta a la BBDD.");
+        }
+        
+        return usuarios;
+    }
+    
+    /*public List<UsuarioBD> obtenerDatosUsuariosBD(){
+        abrirConexionBD();
+        
+        ArrayList<UsuarioBD> usuarios = new ArrayList<>();
+        UsuarioBD usuario;
+        
+        ResultSet resultados = null;
+        
+        try{
+            String con;
+            Statement s = conexionBD.createStatement();
+            
+            con = "SELECT * FROM usuarios";
+            resultados = s.executeQuery(con);
+            
+            while(resultados.next()){
+                usuario = new UsuarioBD();
+                usuario.setId(resultados.getInt("id"));
+                usuario.setNombre(resultados.getString("nombre"));
+                usuario.setApellidos(resultados.getString("apellidos"));
+                usuario.setTlf(resultados.getInt("tlf"));
+                usuario.setPoblacion(resultados.getString("poblacion"));
+                usuario.setProvincia(resultados.getString("provincia"));
+                usuario.setCp(resultados.getInt("cp"));
+                usuario.setPassword(resultados.getString("password"));
+                usuario.setUsuario(resultados.getString("usuario"));
+                usuario.setDomicilio(resultados.getString("domicilio"));
+                usuario.setActivo(resultados.getInt("activo"));
+                usuarios.add(usuario);
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error ejecutando la consulta a la BBDD.");
+        }
+        
+        return usuarios;
+    }*/
 
+    
     boolean comprobarUsuarioAdminBD(String usuario, String clave) {
         abrirConexionBD();
         
@@ -153,7 +221,7 @@ public class AccesoBD {
         try {
             String con;
             Statement s = conexionBD.createStatement();
-            con = "SELECT id, nombre, apellidos, tlf, poblacion, provincia, cp, usuario, domicilio " 
+            con = "SELECT id, nombre, apellidos, tlf, poblacion, provincia, cp, password, usuario, domicilio " 
                     + " FROM usuarios WHERE usuario=\"" + usuario + "\"";
             resultados = s.executeQuery(con);
         }

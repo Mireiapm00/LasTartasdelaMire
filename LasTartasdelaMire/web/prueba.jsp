@@ -1,6 +1,6 @@
 <%-- 
-    Document   : newjsp
-    Created on : 02-may-2020, 18:11:30
+    Document   : prueba
+    Created on : 30-abr-2020, 15:44:10
     Author     : arant
 --%>
 
@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="cuerpo" id="cuerpo">
+        </div>
     </body>
 </html>

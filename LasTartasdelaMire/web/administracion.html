@@ -15,8 +15,8 @@ and open the template in the editor.
     <body>
         <h2>Acceso administrador</h2>
         
-        <div class="cuerpo1">
-            <form ><!-- action="Cargar('op_administrador.html', 'cuerpo')" -->
+       
+            <form method="post" onsubmit="ProcesarForm(this, 'LoginAdmin', 'cuerpo')"><!-- action="Cargar('op_administrador.html', 'cuerpo')" -->
                 <table>
                     <tr> 
                         <td><label for="usuario">Administrador </label></td>
@@ -27,10 +27,10 @@ and open the template in the editor.
                         <td><input id="pass" type="password"></td>
                     </tr>
                 </table>
-                <a onclick="Cargar('op_administrador.html','cuerpo')" id="button">Enviar</a>
                 
+                <input type="submit" value="Enviar" />
             </form>
-        </div>
+       
         
         
     </body>
