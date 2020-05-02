@@ -221,8 +221,7 @@ public class AccesoBD {
         try {
             String con;
             Statement s = conexionBD.createStatement();
-            con = "SELECT id, nombre, apellidos, tlf, poblacion, provincia, cp, password, usuario, domicilio " 
-                    + " FROM usuarios WHERE usuario=\"" + usuario + "\"";
+            con = "SELECT * FROM usuarios WHERE usuario=\"" + usuario + "\"";
             resultados = s.executeQuery(con);
         }
         catch(Exception e){

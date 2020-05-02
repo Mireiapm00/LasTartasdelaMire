@@ -20,10 +20,11 @@
             
             infoUsuario.next();
             
-            String nombre = infoUsuario.getString("nombre");    
+            String nombre = infoUsuario.getString("nombre");   
+            String apell = infoUsuario.getString("apellidos");
         %>
         
-        <h2>Usuari@: <%=nombre%><%=apellidos%></h2>
+        <h2>Usuari@: <%=nombre%><%=apell%></h2>
         
         <!-- MOSTRAR INFO DEL USUARIO EN CUADRITO MONO -->
         

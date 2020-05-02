@@ -11,6 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="./css/estilos_usuario.css" rel="stylesheet" type="text/css">
+    </head>
     </head>
     <body>
         <%
@@ -26,11 +28,11 @@
             String poblacion = infoUsuario.getString("poblacion");
             String provincia = infoUsuario.getString("provincia");
             int cp = infoUsuario.getInt("cp");
-            //String pass = infoUsuario.getPassword("password");
+            String pass = infoUsuario.getString("password");
             String usuario = infoUsuario.getString("usuario");
             String domicilio = infoUsuario.getString("domicilio");
-            
         %>
+        
         <h2>Modificar información</h2>
         <form>
         <table class="cambiarDatosTable">
@@ -41,7 +43,7 @@
             </tr>
             <tr>
                 <td><label for="pass">Clave:</label></td>
-                <td><input id="pass" type="password" name="pass" required></td>
+                <td><input id="pass" type="text" name="pass" value="<%=pass%>" required></td>
             </tr>
 
             <tr>
@@ -81,6 +83,6 @@
              </tr>
             </tfoot>
         </table>
-        </form>
+        </form> 
     </body>
 </html>
