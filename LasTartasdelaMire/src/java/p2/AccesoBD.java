@@ -85,7 +85,7 @@ public class AccesoBD {
             
             while (resultados.next()){
                 producto = new ProductoBD(); //campos que dependeran de la consulta realizada y campos de la BBDD
-                producto.setId(resultados.getInt("id"));
+                producto.setId(resultados.getInt("id_producto"));
                 producto.setNombre(resultados.getString("nombre"));
                 producto.setDescripcion(resultados.getString("descripcion"));
                 producto.setPrecio(resultados.getFloat("precio"));
@@ -242,7 +242,7 @@ public class AccesoBD {
         try{
             String con;
             Statement s = conexionBD.createStatement();
-            con = "SELECT stock FROM productos WHERE id=" + id + ";";
+            con = "SELECT stock FROM productos WHERE id_producto=" + id + ";";
             resultados = s.executeQuery(con);
         }
         catch (Exception e){
@@ -256,5 +256,6 @@ public class AccesoBD {
         
         return stock;
     }
-    
 }
+
+

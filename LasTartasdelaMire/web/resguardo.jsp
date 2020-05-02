@@ -19,7 +19,7 @@
         <%
             List<ProductoBD> carrito = (List<ProductoBD>) session.getAttribute("carrito");
             AccesoBD con = new AccesoBD();
-          
+            
             ResultSet infoUsuario = con.obtenerUsuarioBD((String)session.getAttribute("usuario"));
           
             infoUsuario.next();
@@ -32,12 +32,41 @@
             int cp = infoUsuario.getInt("cp");
             String usuario = infoUsuario.getString("usuario");
             String domicilio = infoUsuario.getString("domicilio");
+            
+            
         %>
+        <script>
+            mostrarCarritoResguardo();
+        </script>
         <h2>Paso 1 de 3: Resguardo</h2>
-        <table>
-            
-            
-        </table>
         
+            <div class="datosEnvioTag">
+                <h4>Datos de Envío y Facturación</h4>
+                <p>
+                    <%=nombre%> <%=apellidos%> - <%=tlf%><br>
+                    <%=domicilio%> <br>
+                    <%=poblacion%> <%=cp%> <br>
+                    <%=provincia%><br>
+                </p>
+                <form method="post" onsubmit="ProcesarForm(this, '%SERVLET_MODIFICARDATOS', 'cuerpo');return false">
+                    <input type="submit" class="button3" value="Cambiar Datos"/>
+                </form>
+                
+                <h4>Forma de pago</h4>
+                
+            </div>
+            
+            <div class="datosEnvioTag2">
+                <h4>Datos de la compra</h4>
+                <p id="carritoTableResguardo">
+
+                </p>
+            </div
+           
+        
+        
+        
+        <button class="button3">Cancelar</button>
+               
     </body>
 </html>

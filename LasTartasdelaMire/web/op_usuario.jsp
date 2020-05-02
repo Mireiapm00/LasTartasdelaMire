@@ -23,7 +23,7 @@
             String nombre = infoUsuario.getString("nombre");    
         %>
         
-        <h2>Usuari@: <%=nombre%></h2>
+        <h2>Usuari@: <%=nombre%><%=apellidos%></h2>
         
         <!-- MOSTRAR INFO DEL USUARIO EN CUADRITO MONO -->
         

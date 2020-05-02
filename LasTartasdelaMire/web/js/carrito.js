@@ -168,21 +168,21 @@ function modificarCantidad(tipo, id_producto) {
 }
 
 
-function formalizarCompra() {
+function mostrarCarritoResguardo() {
+    var html = "", i = 0, p;
+        
+    html += "<table>";
+    html += "<thead><tr><th>Descripción</th><th>Unidades</th><th>Precio</th></tr></thead>";
+
+    for(p in carrito){
+        html += "<tr>";
+        html += "<td>" + carrito[p].nombre + "</td>";
+        html += "<td id='cantidad" +i+ "'> "+ carrito[p].cantidad + "</td>";
+        html += "<td>" + carrito[p].precio + "</td>";
+        html += "</tr>";
+        i++;
+    }
+    html += "</table>";
     
-    var html = mostrarContenidoCarritoTable();
-    
-    //ojo HAY QUE CAMBIAR ESTA FUNCTION....
-    
-    console.log(html + document.getElementById("div_tabla"));
-    
-    html += "<tfoot>";
-    html += "<tr><td colspan='' class='alineado'>";
-    html += "<a onclick='Cargar('check_pedido.html','cuerpo')' class='button2'>Formalizar compra</a>";
-    html += "<a onclick='Cargar('carrito.jsp','cuerpo')' class='button2'> Cancelar compra</a>";
-    html += "</td></tr></tfoot>";
-    
-    document.getElementById("div_tabla").innerHTML = html;
-    
-    
+    document.getElementById('carritoTableResguardo').innerHTML = html;
 }
