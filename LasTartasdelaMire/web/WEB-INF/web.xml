@@ -20,6 +20,10 @@
         <servlet-name>LoginUsuario</servlet-name>
         <servlet-class>p2.LoginUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Tramitacion</servlet-name>
+        <servlet-class>p2.Tramitacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginTienda</servlet-name>
         <url-pattern>/LoginTienda</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>LoginUsuario</servlet-name>
         <url-pattern>/LoginUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Tramitacion</servlet-name>
+        <url-pattern>/Tramitacion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

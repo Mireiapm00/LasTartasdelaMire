@@ -166,23 +166,3 @@ function modificarCantidad(tipo, id_producto) {
     actualizarCarrito();
     crearProductosCarritoPage();
 }
-
-
-function mostrarCarritoResguardo() {
-    var html = "", i = 0, p;
-        
-    html += "<table>";
-    html += "<thead><tr><th>Descripción</th><th>Unidades</th><th>Precio</th></tr></thead>";
-
-    for(p in carrito){
-        html += "<tr>";
-        html += "<td>" + carrito[p].nombre + "</td>";
-        html += "<td id='cantidad" +i+ "'> "+ carrito[p].cantidad + "</td>";
-        html += "<td>" + carrito[p].precio + "</td>";
-        html += "</tr>";
-        i++;
-    }
-    html += "</table>";
-    
-    document.getElementById('carritoTableResguardo').innerHTML = html;
-}

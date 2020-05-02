@@ -154,21 +154,25 @@ h2 {
 
 .datosEnvioTag {
     border: 1px solid blue;
-    width: 40%;
-    margin-top: 5%;
-    margin-left: 15%;
+    width: 50%;
+    margin: 5%;
     padding-left: 5%;
     border-color: #dddddd;
-    
+    display: inline-block;
     line-height: 20pt;
 }
 
 
-.datosEnvioTag h4, .datosEnvioTag2 h4 {
+.datosEnvioTag h4{
     font-weight: bold;
     background-color:#e5e5e5;
     padding: 2%;
-    width: 40%;
+    width: 50%;
+}
+
+#tag {
+    font-weight: bold;
+    background-color:#e5e5e5;
 }
 
 .button3{
@@ -186,18 +190,27 @@ h2 {
     float: right;
 }
 
-.datosEnvioTag2 {
-    border: 1px solid blue;
-    width: 40%;
+.datosEnvioTag table{
+    width:  90%;
     margin-top: 5%;
-    margin-left: 15%;
     margin-bottom: 5%;
-    padding-left: 5%;
-    border-color: #dddddd;
-    line-height: 20pt;
+    text-align: center;
+    border: 1px solid #dddddd;
 }
 
-#carritoTableResguardo{
-    padding: 10%;
-    border: red;
+.datosEnvioTag td th {
+    padding: 15%;
+    margin: 5%;
+}
+
+.datosEnvioTag img {
+    max-width: 20%;
+    height: auto;
+    float: left;
+}
+
+/* check_pedido */
+.barra {
+    width:  90%;
+    
 }

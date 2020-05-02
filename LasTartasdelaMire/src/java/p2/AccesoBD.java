@@ -152,46 +152,7 @@ public class AccesoBD {
         
         return usuarios;
     }
-    
-    /*public List<UsuarioBD> obtenerDatosUsuariosBD(){
-        abrirConexionBD();
         
-        ArrayList<UsuarioBD> usuarios = new ArrayList<>();
-        UsuarioBD usuario;
-        
-        ResultSet resultados = null;
-        
-        try{
-            String con;
-            Statement s = conexionBD.createStatement();
-            
-            con = "SELECT * FROM usuarios";
-            resultados = s.executeQuery(con);
-            
-            while(resultados.next()){
-                usuario = new UsuarioBD();
-                usuario.setId(resultados.getInt("id"));
-                usuario.setNombre(resultados.getString("nombre"));
-                usuario.setApellidos(resultados.getString("apellidos"));
-                usuario.setTlf(resultados.getInt("tlf"));
-                usuario.setPoblacion(resultados.getString("poblacion"));
-                usuario.setProvincia(resultados.getString("provincia"));
-                usuario.setCp(resultados.getInt("cp"));
-                usuario.setPassword(resultados.getString("password"));
-                usuario.setUsuario(resultados.getString("usuario"));
-                usuario.setDomicilio(resultados.getString("domicilio"));
-                usuario.setActivo(resultados.getInt("activo"));
-                usuarios.add(usuario);
-            }
-        }
-        catch(Exception e){
-            System.out.println("Error ejecutando la consulta a la BBDD.");
-        }
-        
-        return usuarios;
-    }*/
-
-    
     boolean comprobarUsuarioAdminBD(String usuario, String clave) {
         abrirConexionBD();
         
@@ -227,9 +188,7 @@ public class AccesoBD {
         catch(Exception e){
             System.out.println("Error al completar la consulta");
         }
-        
-        //System.out.print(resultados);
-        
+                
         return resultados;
     }
 

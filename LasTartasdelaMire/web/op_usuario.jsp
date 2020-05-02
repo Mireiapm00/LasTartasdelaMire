@@ -25,9 +25,7 @@
         %>
         
         <h2>Usuari@: <%=nombre%><%=apell%></h2>
-        
-        <!-- MOSTRAR INFO DEL USUARIO EN CUADRITO MONO -->
-        
+                
         <div class="options">
             <a onclick="Cargar('cambiar_datos.jsp','cuerpo')" class="button1">Cambiar datos</a>
             <a onclick="Cargar('gestionar_pedidos.html','cuerpo')" class="button1"> Gestionar pedidos</a>
@@ -35,6 +33,5 @@
                 <input type="submit" class="button1" value="Cerrar sesión">
             </form>
         </div>
-        <!--<div class="cuerpo"></div>-->
     </body>
 </html>
