@@ -17,6 +17,8 @@
     </head>
     <body>
         <%
+            session.setAttribute("origen_resguardo", "resguardo.jsp");
+            
             List<ProductoBD> carrito = (List<ProductoBD>) session.getAttribute("carrito");
             AccesoBD con = new AccesoBD();
             
@@ -50,7 +52,12 @@
                     <%=poblacion%> <%=cp%> <br>
                     <%=provincia%><br>
                 </p>
-                
+                <form method="post" onsubmit="ProcesarForm(this, 'ModificarDatosUsuario', 'cuerpo');return false">
+                    <input type="submit" class="button3" name="bModificar" value="Cambiar Datos"/>
+                </form>
+                <%
+            
+            %>
                 <br>
                 <h4>Forma de pago</h4>
                 <form method="post" action="Tramitacion">

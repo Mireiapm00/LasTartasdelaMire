@@ -15,6 +15,8 @@
     </head>
     <body>
         <%
+            session.setAttribute("origen_resguardo", null);
+            
             AccesoBD con = new AccesoBD();
             ResultSet infoUsuario = con.obtenerUsuarioBD((String)session.getAttribute("usuario"));
             

@@ -21,6 +21,10 @@
         <servlet-class>p2.LoginUsuario</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ModificarDatosUsuario</servlet-name>
+        <servlet-class>p2.ModificarDatosUsuario</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Tramitacion</servlet-name>
         <servlet-class>p2.Tramitacion</servlet-class>
     </servlet>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>LoginUsuario</servlet-name>
         <url-pattern>/LoginUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarDatosUsuario</servlet-name>
+        <url-pattern>/ModificarDatosUsuario</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Tramitacion</servlet-name>

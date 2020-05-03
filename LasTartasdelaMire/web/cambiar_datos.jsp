@@ -15,7 +15,7 @@
     </head>
     </head>
     <body>
-        <%
+        <%  
             AccesoBD con = new AccesoBD();
             ResultSet infoUsuario = con.obtenerUsuarioBD((String)session.getAttribute("usuario"));
             
@@ -31,10 +31,11 @@
             String pass = infoUsuario.getString("password");
             String usuario = infoUsuario.getString("usuario");
             String domicilio = infoUsuario.getString("domicilio");
+            String tarjeta = infoUsuario.getString("tarjeta");
         %>
         
         <h2>Modificar información</h2>
-        <form>
+        <form method="post" onsubmit="ProcesarForm(this, 'ModificarDatosUsuario', 'cuerpo'); return false">
         <table class="cambiarDatosTable">
             <tr><td colspan="2" style="padding-bottom: 1%;"><b>Introduce la siguiente información:</b></td></tr>
             <tr>
@@ -45,10 +46,13 @@
                 <td><label for="pass">Clave:</label></td>
                 <td><input id="pass" type="text" name="pass" value="<%=pass%>" required></td>
             </tr>
-
+            <tr>
+                <td><label for="tarj">Tarjeta:</label></td>
+                <td><input id="tarj" type="number" name="tarj" pattern="[0-9]{9}" value="<%=tarjeta%>" required></td>
+            </tr>
             <tr>
                 <td><label for="nombre">Nombre:</label></td>
-                <td><input id="nombre" type="text" name="nombre" pattern="[A-Za-z]{0,50}" value="<%=nombre%>" required></td>
+                <td><input id="nombre" type="text" name="nombre" value="<%=nombre%>" required></td>
             </tr>
             <tr>
                 <td><label for="apell">Apellidos:</label></td>
@@ -77,8 +81,7 @@
             <tfoot>
              <tr>
                 <td colspan="2" id="botonesBar">
-                    <a onclick="Cargar('op_usuario.jsp','cuerpo')" class="button3">Cambiar</a>
-                    <a onclick="Cargar('op_usuario.jsp','cuerpo')" class="button3">Cancelar</a>
+                    <input type="submit" class="button3" name="bModificar" value="Guardar"/>
                 </td>
              </tr>
             </tfoot>
