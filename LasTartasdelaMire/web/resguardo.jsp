@@ -43,32 +43,33 @@
         
             <div class="datosEnvioTag">
                 <h4>Datos de Envío y Facturación</h4>
-                <form method="post" onsubmit="ProcesarForm(this, '%SERVLETMODIFICARDATOS%', 'cuerpo');return false">
-                    <input type="submit" class="button3" value="Cambiar Datos"/>
+                <form method="post" onsubmit="ProcesarForm(this, 'ModificarDatosUsuario', 'cuerpo');return false">
+                    <input type="submit" class="button3" name="bModificar" value="Cambiar Datos"/>
                 </form>
                 <p>
                     <%=nombre%> <%=apellidos%> - <%=tlf%><br>
                     <%=domicilio%> <br>
                     <%=poblacion%> <%=cp%> <br>
-                    <%=provincia%><br>
+                    <%=provincia%><br><br>
+                    <%
+                        if(!tarjeta.isEmpty()){
+                    %>
+                    <b>Número de tarjeta: </b><%=tarjeta%>
+                    <%
+                        }
+                    %>
                 </p>
-                <form method="post" onsubmit="ProcesarForm(this, 'ModificarDatosUsuario', 'cuerpo');return false">
-                    <input type="submit" class="button3" name="bModificar" value="Cambiar Datos"/>
-                </form>
-                <%
-            
-            %>
-                <br>
+                
                 <h4>Forma de pago</h4>
                 <form method="post" action="Tramitacion">
                     
                     <input type="radio" name="formaPago" id="tarjeta" value="tarjeta" checked>Tarjeta de crédito
-                    <input type="radio" name="formaPago" id="contrareembolso" value="contrareembolso">Contrareembolso
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="formaPago" id="contrareembolso" value="contrareembolso">Contrareembolso
                     <br><br>
                     
                     <h4>Datos de la compra</h4>
                     <table>
-                        <thead><tr><th>Nombre</th><th>Unidades</th><th>Precio</th><th>Importe</th></tr></thead>
+                        <thead><tr><th>  Nombre  </th><th>  Uds  </th><th>  Precio  </th><th>  Importe  </th></tr></thead>
 
                         <%
                             float importe_total = 0;
@@ -90,7 +91,7 @@
                     </table>
                         <input type="submit" class="button3" value="Tramitar pedido"/>
                 </form>
-                <input type="submit" class="button3" onclick="Cargar('check_pedido.jsp', 'cuerpo')" value="Cancelar"/>
+                <input type="submit" class="button3" onclick="Cargar('carrito.jsp', 'cuerpo')" value="Cancelar"/>
             </div>  
     </body>
 </html>

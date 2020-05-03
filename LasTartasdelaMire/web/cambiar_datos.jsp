@@ -47,10 +47,6 @@
                 <td><input id="pass" type="text" name="pass" value="<%=pass%>" required></td>
             </tr>
             <tr>
-                <td><label for="tarj">Tarjeta:</label></td>
-                <td><input id="tarj" type="number" name="tarj" pattern="[0-9]{9}" value="<%=tarjeta%>" required></td>
-            </tr>
-            <tr>
                 <td><label for="nombre">Nombre:</label></td>
                 <td><input id="nombre" type="text" name="nombre" value="<%=nombre%>" required></td>
             </tr>
@@ -73,6 +69,10 @@
             <tr>
                 <td><label for="cp">Código Postal:</label></td>
                 <td><input id="cp" type="text" name="cp" value="<%=cp%>" required></td>
+            </tr>
+             <tr>
+                <td><label for="tarj">Tarjeta:</label></td>
+                <td><input id="tarj" type="number" name="tarj" pattern="[0-9]{16}" value="<%=tarjeta%>"></td>
             </tr>
             <tr>
                 <td><label for="tlf">Teléfono:</label></td>

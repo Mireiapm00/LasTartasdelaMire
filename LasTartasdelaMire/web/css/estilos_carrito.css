@@ -195,12 +195,15 @@ h2 {
     margin-top: 5%;
     margin-bottom: 5%;
     text-align: center;
-    border: 1px solid #dddddd;
 }
 
 .datosEnvioTag td th {
-    padding: 15%;
+    padding: 20%;
     margin: 5%;
+}
+
+.datosEnvioTag th{
+    background-color:#e5e5e5;
 }
 
 .datosEnvioTag img {
