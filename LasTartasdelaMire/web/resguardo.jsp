@@ -17,8 +17,6 @@
     </head>
     <body>
         <%
-            session.setAttribute("origen_resguardo", "resguardo.jsp");
-            
             List<ProductoBD> carrito = (List<ProductoBD>) session.getAttribute("carrito");
             AccesoBD con = new AccesoBD();
             
@@ -32,11 +30,19 @@
             String poblacion = infoUsuario.getString("poblacion");
             String provincia = infoUsuario.getString("provincia");
             int cp = infoUsuario.getInt("cp");
-            String usuario = infoUsuario.getString("usuario");
+            int idUsuario = infoUsuario.getInt("id");
             String domicilio = infoUsuario.getString("domicilio");
             String tarjeta = infoUsuario.getString("tarjeta");
             
+            session.setAttribute("idUsuario", idUsuario);
+            session.setAttribute("direccion_envio", domicilio);
+            session.setAttribute("poblacion", poblacion);
+            session.setAttribute("cp", cp);
+            if(!tarjeta.isEmpty()){
+                session.setAttribute("tarjeta", tarjeta);
+            }
             
+            session.setAttribute("origen_resguardo", "resguardo.jsp");
         %>
         
         <h2>Paso 1 de 3: Resguardo</h2>
@@ -63,9 +69,22 @@
                 <h4>Forma de pago</h4>
                 <form method="post" action="Tramitacion">
                     
-                    <input type="radio" name="formaPago" id="tarjeta" value="tarjeta" checked>Tarjeta de crédito
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="formaPago" id="contrareembolso" value="contrareembolso">Contrareembolso
-                    <br><br>
+                    <%
+                        if(tarjeta.isEmpty()){
+                    %>
+                            <b>Debes introducir un número de tarjeta</b><br>
+                            <input type="radio" name="formaPago" id="tarjeta" value="tarjeta" disabled>Tarjeta de crédito
+                            <input type="radio" name="formaPago" id="contrareembolso" value="contrareembolso" checked>Contrareembolso
+                    <%
+                        }
+                        else {
+                    %>
+                             <input type="radio" name="formaPago" id="tarjeta" value="tarjeta" checked>Tarjeta de crédito
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="formaPago" id="contrareembolso" value="contrareembolso">Contrareembolso
+                            <br><br>
+                    <%
+                        }
+                    %>
                     
                     <h4>Datos de la compra</h4>
                     <table>

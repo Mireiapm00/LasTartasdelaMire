@@ -41,7 +41,19 @@
                             <p class="precio"><%=precio%>€</p>
                             <p><%=descripcion%></p><p>(<%=existencias%> en stock, infinitas...)</p>
                             <p>
-                                <button onclick="anadirProductoCarrito('<%=codigo%>','<%=nombre%>', '<%=precio%>', '<%=imagen%>', '<%=existencias%>', '<%=descripcion%>');">Añadir al carrito</button>
+                                <%
+                                    if(existencias != 0){
+                                %>
+                                        <button onclick="anadirProductoCarrito('<%=codigo%>','<%=nombre%>', '<%=precio%>', '<%=imagen%>', '<%=existencias%>', '<%=descripcion%>');">Añadir al carrito</button>
+                                <%
+                                  }
+                                    else {
+                                %>
+                                        <button disabled>Añadir al carrito</button>
+                                <%
+                                    }
+                                %>
+                                
                             </p>
                         </div>
                     </td>

@@ -214,6 +214,41 @@ public class AccesoBD {
         
         return stock;
     }
+
+    public boolean registrarPedidoBD(int idUsuario, String fecha, float importe_total, String direccion_envio, 
+            String poblacion, int cp, String tipo_pago, String tarjeta, String estado) {
+        boolean ok = false;
+        abrirConexionBD();
+        
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "INSERT INTO pedidos(usuario, fecha, importe, direccion_envio, poblacion, codigo_postal, tipo_pago, numero_tarjeta, estado)"
+                    + " VALUES (" + idUsuario + ",STR_TO_DATE('" + fecha + "', '%d/%m/%Y')," + importe_total + ", \"" + direccion_envio + "\", \"" 
+                    + poblacion + "\", " + cp + ", \"" + tipo_pago + "\" ,\"" + tarjeta + "\", \"" + estado + "\")";
+            s.executeUpdate(con);
+            ok = true;
+        }
+        catch(SQLException e){
+            System.out.println("Error al insertar en la BBDD");
+        }
+        
+        return ok;
+    }
+
+    public void actualizarStockProductoBD(int id, int stock) {
+        abrirConexionBD();
+        
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "UPDATE productos SET stock = " + stock + " WHERE id_producto=" + id + ";";
+            s.executeUpdate(con);
+        }
+        catch(Exception e){
+            System.out.println("Error al actualizar la BBDD");
+        }        
+    }
 }
 
 

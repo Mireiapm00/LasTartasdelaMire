@@ -96,6 +96,10 @@ h2 {
     align-items: center;
 }
 
+.bodyCheckPedido h5{
+    font-family: sans-serif;
+}
+
 .logo {
     width: 40%;
     /*border: 1px solid green;*/

@@ -7,6 +7,7 @@ package p2;
  */
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.StringReader;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class ProcesarPedido extends HttpServlet {
                             nuevo.setId(Integer.parseInt(indice));
                             nuevo.setNombre(prod.get("nombre").toString());
                             nuevo.setDescripcion(prod.get("descripcion").toString());
-                            nuevo.setStock((int)10);
+                            //nuevo.setStock((int)10);
                             nuevo.setPrecio((float)100.0);
                             nuevo.setCantidad(Integer.parseInt(prod.get("cantidad").toString()));
                             nuevo.setImagen(prod.get("imagen").toString());

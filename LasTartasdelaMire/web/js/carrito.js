@@ -55,13 +55,14 @@ function anadirProductoCarrito (id_producto, nombre, precio, imagen, stock, desc
         product.cantidad = 1;
         product.imagen = imagen;
         product.stock = stock;
+        console.log(stock);
         product.descripcion = descripcion;
 
         carrito[id_producto] = product;
     }
     canti++;
     actualizarCarrito();
-    
+        
     document.getElementById('carrito').innerHTML = " (" + canti + ")";
 }
 
@@ -86,7 +87,6 @@ function mostrarContenidoCarritoTable(){
         html += "<td colspan='4' class='alineado'>";
         html += "<a onclick=\"Cargar('productos.jsp','cuerpo')\" class=\"button1\">Continuar comprando</a>";
         html += "<a onclick=\"ProcesarCarrito(carrito,'ProcesarPedido','cuerpo')\" class=\"button1\">Formalizar pedido</a>";
-        //html += "<a onclick=\"Cargar('resumen_pedido.html','cuerpo')\" class=\"button1\">Formalizar pedido</a>";
         html += "<form method=\"post\" onsubmit=\"ProcesarForm(this, 'CerrarSesion', 'cuerpo');return false\">";
         html += "<input type=\"submit\" class=\"button1\" value=\"Cerrar sesión\">";
         html += "</form>";
