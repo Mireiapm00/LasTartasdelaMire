@@ -59,22 +59,22 @@ public class Tramitacion extends HttpServlet {
         AccesoBD con = new AccesoBD();
         
         if(!con.registrarPedidoBD(idUsuario, fecha, importe_total, direccion_envio, poblacion, cp, tipo_pago, tarjeta, "Tramitado")){
-            response.sendError(5005, "Error al registrarPedido en la BD");
+            response.sendError(5005, "Error al registrar el pedido en la BD");
         }
-        sesion.setAttribute("estadoPedido", "tramitado");
-       
-        
-        /* quitar el stock de producto de la BD */
-        int stock;
-        
-        try {
-            for(ProductoBD p : carrito){
-                stock = con.obtenerStockProductoBD(p.getId());
-                stock -= p.getCantidad();
-                con.actualizarStockProductoBD(p.getId(), stock); 
+        else {
+            sesion.setAttribute("estadoPedido", "tramitado");
+            /* quitar el stock de productos en BD */
+            int stock;
+
+            try {
+                for(ProductoBD p : carrito){
+                    stock = con.obtenerStockProductoBD(p.getId());
+                    stock -= p.getCantidad();
+                    con.actualizarStockProductoBD(p.getId(), stock); 
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Tramitacion.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Tramitacion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         sesion.removeAttribute("formaPago");

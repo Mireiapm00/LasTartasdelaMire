@@ -20,6 +20,7 @@
         %>
     </head>
     <body>
+        
         <%
         if(session.getAttribute("estadoPedido").equals("tramitado")){
             
@@ -30,6 +31,9 @@
                 <h3>Gracias por su compra :)</h3><br><br>
                 <h5>En 3s se va a mover al inicio de nuestra web! </h5>
             </div>
+            <script>
+                
+            </script>
         <%
             }
             if(session.getAttribute("estadoPedido").equals("cancelado")){
