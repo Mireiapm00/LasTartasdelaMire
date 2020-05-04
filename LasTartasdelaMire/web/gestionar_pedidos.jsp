@@ -1,0 +1,62 @@
+<%-- 
+    Document   : gestionar_pedidos
+    Created on : 04-may-2020, 12:12:40
+    Author     : arant
+--%>
+
+<%@page import="java.util.Date"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page contentType="text/html" import="p2.*" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%  
+            AccesoBD con = new AccesoBD();
+            String usuarioA = (String)session.getAttribute("usuario");
+            ResultSet infoUsuario = con.obtenerUsuarioBD(usuarioA);
+            infoUsuario.next();
+            int id = infoUsuario.getInt("id");
+            
+            ResultSet pedidosUsuario = con.obtenerPedidosUsuarioBD(id);
+        %>
+        <h2>Gestionar pedidos</h2>
+       
+        <table class="gestionTable">
+            <thead>
+                <tr class="alineadoIzq">
+                    <th class="alineado">Código del pedido</th>
+                    <th>Fecha</th>
+                    <th>Importe</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+                <%
+                    while (pedidosUsuario.next()) {
+                        int codigo = pedidosUsuario.getInt("id_pedido");
+                        Date fecha = pedidosUsuario.getDate("fecha");
+                        float importe = pedidosUsuario.getFloat("importe");
+                        String estado = pedidosUsuario.getString("estado");
+                        
+                %>
+                <tr>
+                    <td class="alineado"><%=codigo%></td>
+                    <td><%=fecha%></td>
+                    <td><%=importe%>€</td>
+                    <td><%=estado%></td>
+                    <td><input type="button" value="Eliminar pedido"/></td>
+                    <td></td>
+                </tr>
+                <%
+                    }
+                %>
+                <tfoot>
+                    <tr><td colspan="5" class="alineado"><a onclick="Cargar('op_usuario.jsp','cuerpo')" id="button2">Volver</a></td></tr>
+                </tfoot>
+        </table>
+    </body>
+</html>

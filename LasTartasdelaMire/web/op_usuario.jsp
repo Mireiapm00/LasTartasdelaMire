@@ -30,7 +30,7 @@
                 
         <div class="options">
             <a onclick="Cargar('cambiar_datos.jsp','cuerpo')" class="button1">Cambiar datos</a>
-            <a onclick="Cargar('gestionar_pedidos.html','cuerpo')" class="button1"> Gestionar pedidos</a>
+            <a onclick="Cargar('gestionar_pedidos.jsp','cuerpo')" class="button1"> Gestionar pedidos</a>
             <form method="post" onsubmit="ProcesarForm(this, 'CerrarSesion', 'cuerpo');return false">
                 <input type="submit" class="button1" value="Cerrar sesión">
             </form>

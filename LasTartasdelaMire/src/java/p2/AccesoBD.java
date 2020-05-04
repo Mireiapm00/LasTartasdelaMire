@@ -269,6 +269,25 @@ public class AccesoBD {
             System.out.println("Error al actualizar la BBDD");
         }        
     }
+    
+    
+    public ResultSet obtenerPedidosUsuarioBD(int id){
+        abrirConexionBD();
+
+        ResultSet resultados = null;
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "SELECT id_pedido, fecha, importe, estado FROM pedidos WHERE usuario=" + id + ";";
+            resultados = s.executeQuery(con);
+        }
+        catch(Exception e){
+            System.out.println("Error al completar la consulta");
+        }
+                
+        return resultados;
+    }
+    
 }
 
 
