@@ -22,6 +22,7 @@
             infoUsuario.next();
             
             int id = infoUsuario.getInt("id");
+            session.setAttribute("id_usuario", id); //Guardar el id, para recogerlo en el servlet
             String nombre = infoUsuario.getString("nombre");
             String apellidos = infoUsuario.getString("apellidos");
             int tlf = infoUsuario.getInt("tlf");
@@ -40,35 +41,39 @@
             <tr><td colspan="2" style="padding-bottom: 1%;"><b>Introduce la siguiente información:</b></td></tr>
             <tr>
                 <td><label for="user">Usuario:</label></td>
-                <td><input id="user" type="text" name="user" value="<%=usuario%>" required autofocus></td>
+                <td><input id="user" type="text" name="c7" value="<%=usuario%>" required autofocus></td>
             </tr>
             <tr>
                 <td><label for="pass">Clave:</label></td>
-                <td><input id="pass" type="text" name="pass" value="<%=pass%>" required></td>
+                <td><input id="pass" type="text" name="c6" value="<%=pass%>" required></td>
+            </tr>
+            <tr>
+                <td><label for="tarj">Tarjeta:</label></td>
+                <td><input id="tarj" type="number" name="c9" pattern="[0-9]{9}" value="<%=tarjeta%>" required></td>
             </tr>
             <tr>
                 <td><label for="nombre">Nombre:</label></td>
-                <td><input id="nombre" type="text" name="nombre" value="<%=nombre%>" required></td>
+                <td><input id="nombre" type="text" name="c0" value="<%=nombre%>" required></td>
             </tr>
             <tr>
                 <td><label for="apell">Apellidos:</label></td>
-                <td><input id="apell" type="text" name="apell" value="<%=apellidos%>" required></td>
+                <td><input id="apell" type="text" name="c1" value="<%=apellidos%>" required></td>
             </tr>
             <tr>
                 <td><label for="dom">Domicilio:</label></td>
-                <td><input id="dom" type="text" name="dom" value="<%=domicilio%>" required></td>
+                <td><input id="dom" type="text" name="c8" value="<%=domicilio%>" required></td>
             </tr>
             <tr>
                 <td><label for="pob">Población:</label></td>
-                <td><input id="pob" type="text" name="pob" value="<%=poblacion%>" required></td>
+                <td><input id="pob" type="text" name="c3" value="<%=poblacion%>" required></td>
             </tr>
             <tr>
                 <td><label for="pro">Provincia:</label></td>
-                <td><input id="pro" type="text" name="pro" value="<%=provincia%>" required></td>
+                <td><input id="pro" type="text" name="c4" value="<%=provincia%>" required></td>
             </tr>
             <tr>
                 <td><label for="cp">Código Postal:</label></td>
-                <td><input id="cp" type="text" name="cp" value="<%=cp%>" required></td>
+                <td><input id="cp" type="text" name="c5" value="<%=cp%>" required></td>
             </tr>
              <tr>
                 <td><label for="tarj">Tarjeta:</label></td>
@@ -76,7 +81,7 @@
             </tr>
             <tr>
                 <td><label for="tlf">Teléfono:</label></td>
-                <td><input id="tlf" type="tel" name="tlf" pattern="[0-9]{9}" value="<%=tlf%>" required></td>
+                <td><input id="tlf" type="tel" name="c2" pattern="[0-9]{9}" value="<%=tlf%>" required></td>
             </tr>
             <tfoot>
              <tr>

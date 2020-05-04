@@ -20,6 +20,15 @@ public class UsuarioBD {
     private String password;
     private String usuario;
     private String domicilio;
+    private String tarjeta;
+
+    public String getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(String tarjeta) {
+        this.tarjeta = tarjeta;
+    }
     private int activo;
 
     public int getId() {

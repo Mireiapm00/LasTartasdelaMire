@@ -31,24 +31,36 @@ public class ModificarDatosUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        AccesoBD con = new AccesoBD();
         HttpSession sesion = request.getSession(true);
+        
         String direccion = (String) sesion.getAttribute("origen_resguardo");
         String boton = (String) request.getParameter("bModificar");
         
+        String[] datos = new String[10];
+        int id = (int)sesion.getAttribute("id_usuario");
+        
+        
         if(boton.equals("Guardar")){
-            if(direccion != null){
-                response.sendRedirect(direccion);
+            for(int i = 0; i < 10; i++){
+                datos[i] = request.getParameter("c" + i);
             }
-            else{
-                response.sendRedirect("op_usuario.jsp");
+            if(con.modificarUsuarioBD(datos, id)){
+                if(direccion != null){
+                    response.sendRedirect(direccion);
+                }
+                else{
+                    response.sendRedirect("op_usuario.jsp");
+                }
             }
         }else{
             response.sendRedirect("cambiar_datos.jsp");
         }
-            
+        
+        }
+        
 
-
-    }
+     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
