@@ -288,6 +288,23 @@ public class AccesoBD {
         return resultados;
     }
     
+    public ResultSet obtenerUltimoPedidoBD() {
+        abrirConexionBD();
+
+        ResultSet resultados = null;
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "SELECT * FROM pedidos ORDER BY id_pedido desc LIMIT 1;";
+            resultados = s.executeQuery(con);
+        }
+        catch(Exception e){
+            System.out.println("Error al completar la consulta");
+        }
+                
+        return resultados;
+    }
+    
 }
 
 

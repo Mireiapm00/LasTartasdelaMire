@@ -67,7 +67,7 @@
                 </p>
                 
                 <h4>Forma de pago</h4>
-                <form method="post" action="Tramitacion">
+                <form method="post" onsubmit="ProcesarForm(this, 'Tramitacion', 'cuerpo'); return false;">
                     
                     <%
                         if(tarjeta.isEmpty()){
@@ -88,7 +88,7 @@
                     
                     <h4>Datos de la compra</h4>
                     <table>
-                        <thead><tr><th>  Nombre  </th><th>  Uds  </th><th>  Precio  </th><th>  Importe  </th></tr></thead>
+                        <thead><tr><th>  Nombre  </th><th>  Uds  </th><th>  Precio/Ud  </th><th>  Importe  </th></tr></thead>
 
                         <%
                             float importe_total = 0;

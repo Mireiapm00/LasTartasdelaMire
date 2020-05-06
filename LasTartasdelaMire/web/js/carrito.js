@@ -70,7 +70,7 @@ function mostrarContenidoCarritoTable(){
     var html = "", i = 0, p;
         
     if(canti !== 0){
-        html += "<thead><tr><th>Descripción</th><th>Unidades</th><th>Precio</th><th>Modificar Cantidad</th></tr></thead>";
+        html += "<thead><tr><th>Descripción</th><th>Unidades</th><th>Precio Unitario</th><th>Modificar Cantidad</th></tr></thead>";
         
         for(p in carrito){
             html += "<tr>";

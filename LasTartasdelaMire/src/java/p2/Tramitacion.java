@@ -7,6 +7,7 @@ package p2;
  */
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,56 +37,19 @@ public class Tramitacion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                
-        HttpSession sesion = request.getSession(true);
-        List<ProductoBD> carrito = (List<ProductoBD>) sesion.getAttribute("carrito");
-        
-        String tipo_pago = (String) request.getParameter("formaPago");
-        
-        int idUsuario = (int) sesion.getAttribute("idUsuario");
-        String direccion_envio = (String) sesion.getAttribute("direccion_envio");
-        String poblacion = (String) sesion.getAttribute("poblacion");
-        int cp = (int) sesion.getAttribute("cp");
-        float importe_total = (float) sesion.getAttribute("importe");
-        Date d = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
-        String fecha = dateFormat.format(d);
-        String tarjeta = "_";
-        
-        if(tipo_pago.equals("tarjeta")){
-            tarjeta = (String) sesion.getAttribute("tarjeta");
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Inicio</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Inicio at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        
-        AccesoBD con = new AccesoBD();
-        
-        if(!con.registrarPedidoBD(idUsuario, fecha, importe_total, direccion_envio, poblacion, cp, tipo_pago, tarjeta, "Tramitado")){
-            response.sendError(5005, "Error al registrar el pedido en la BD");
-        }
-        else {
-            sesion.setAttribute("estadoPedido", "tramitado");
-            /* quitar el stock de productos en BD */
-            int stock;
-
-            try {
-                for(ProductoBD p : carrito){
-                    stock = con.obtenerStockProductoBD(p.getId());
-                    stock -= p.getCantidad();
-                    con.actualizarStockProductoBD(p.getId(), stock); 
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Tramitacion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        sesion.removeAttribute("formaPago");
-        sesion.removeAttribute("idUsuario");
-        sesion.removeAttribute("direccion_envio");
-        sesion.removeAttribute("poblacion");
-        sesion.removeAttribute("cp");
-        sesion.removeAttribute("tarjeta");
-        sesion.removeAttribute("importe");
-        
-        response.sendRedirect("pedidoFinalizado.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -114,7 +78,56 @@ public class Tramitacion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        HttpSession sesion = request.getSession(true);
+        List<ProductoBD> carrito = (List<ProductoBD>) sesion.getAttribute("carrito");
+        
+        String tipo_pago = (String) request.getParameter("formaPago");
+        
+        int idUsuario = (int) sesion.getAttribute("idUsuario");
+        String direccion_envio = (String) sesion.getAttribute("direccion_envio");
+        String poblacion = (String) sesion.getAttribute("poblacion");
+        int cp = (int) sesion.getAttribute("cp");
+        float importe_total = (float) sesion.getAttribute("importe");
+        Date d = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
+        String fecha = dateFormat.format(d);
+        String tarjeta = "_";
+        
+        if(tipo_pago.equals("tarjeta")){
+            tarjeta = (String) sesion.getAttribute("tarjeta");
+        }
+        
+        AccesoBD con = new AccesoBD();
+        
+        if(!con.registrarPedidoBD(idUsuario, fecha, importe_total, direccion_envio, poblacion, cp, tipo_pago, tarjeta, "Pendiente")){
+            response.sendError(5005, "Error al registrar el pedido en la BD");
+        }
+        else {
+            sesion.setAttribute("estadoPedido", "Pendiente");
+            /* quitar el stock de productos en BD */
+            int stock;
+
+            try {
+                for(ProductoBD p : carrito){
+                    stock = con.obtenerStockProductoBD(p.getId());
+                    stock -= p.getCantidad();
+                    con.actualizarStockProductoBD(p.getId(), stock); 
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Tramitacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        sesion.removeAttribute("idUsuario");
+        sesion.removeAttribute("direccion_envio");
+        sesion.removeAttribute("poblacion");
+        sesion.removeAttribute("cp");
+        sesion.removeAttribute("tarjeta");
+        sesion.removeAttribute("importe");
+        
+        response.sendRedirect("pedidoFinalizado.jsp");
+        
     }
 
     /**

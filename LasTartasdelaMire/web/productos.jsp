@@ -42,14 +42,14 @@
                             <p><%=descripcion%></p><p>(<%=existencias%> en stock, infinitas...)</p>
                             <p>
                                 <%
-                                    if(existencias != 0){
+                                    if(existencias > 0){
                                 %>
                                         <button onclick="anadirProductoCarrito('<%=codigo%>','<%=nombre%>', '<%=precio%>', '<%=imagen%>', '<%=existencias%>', '<%=descripcion%>');">Añadir al carrito</button>
                                 <%
                                   }
                                     else {
                                 %>
-                                        <button disabled>Añadir al carrito</button>
+                                        &nbsp;
                                 <%
                                     }
                                 %>
