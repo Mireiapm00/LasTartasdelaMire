@@ -83,6 +83,7 @@ public class Tramitacion extends HttpServlet {
         List<ProductoBD> carrito = (List<ProductoBD>) sesion.getAttribute("carrito");
         
         String tipo_pago = (String) request.getParameter("formaPago");
+        String tarjeta = (String) request.getParameter("numTarjeta");
         
         int idUsuario = (int) sesion.getAttribute("idUsuario");
         String direccion_envio = (String) sesion.getAttribute("direccion_envio");
@@ -92,10 +93,19 @@ public class Tramitacion extends HttpServlet {
         Date d = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
         String fecha = dateFormat.format(d);
-        String tarjeta = "_";
+        sesion.setAttribute("contrareembolso", "");
         
-        if(tipo_pago.equals("tarjeta")){
+        if(tipo_pago.equals("tarjeta") && tarjeta.equals("")){ //formapago tarjeta i no introduce numero
             tarjeta = (String) sesion.getAttribute("tarjeta");
+            if(tarjeta.equals("null")){
+                sesion.setAttribute("contrareembolso", "contrareembolso");
+            }
+        }
+        else if(tipo_pago.equals("tarjeta") && !tarjeta.equals("")){
+            tarjeta = (String) sesion.getAttribute("tarjeta");
+        }
+        else if(tipo_pago.equals("contrareembolso")){
+            sesion.setAttribute("contrareembolso", "contrareembolso");
         }
         
         AccesoBD con = new AccesoBD();

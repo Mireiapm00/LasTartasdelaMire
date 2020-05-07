@@ -89,8 +89,7 @@ h2 {
 }
 
 .bodyCheckPedido {
-    margin-top: 15%;
-    margin: 10%;
+    margin-left: 10%;
    /* border: 1px solid #dddddd;*/
     display: flex;
     align-items: center;
@@ -98,11 +97,16 @@ h2 {
 
 .bodyCheckPedido h5{
     font-family: sans-serif;
+    
 }
 
 .insideCheckPedido {
-    margin: 2%;
+    display: inline-block;
+    margin-left: 20%;
+    margin-bottom: 40%;
+    align-items: center;
 }
+
 
 .logo {
     width: 40%;

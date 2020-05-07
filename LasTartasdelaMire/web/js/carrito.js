@@ -7,6 +7,9 @@
 var carrito = null;
 var canti = 0;  
 
+function borrarCarrito(){
+    localStorage.removeItem("carrito");
+}
 
 function actualizarCarrito() {
     localStorage.clear();

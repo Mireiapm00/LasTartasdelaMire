@@ -45,7 +45,7 @@
             session.setAttribute("origen_resguardo", "resguardo.jsp");
         %>
         
-        <h2>Paso 1 de 3: Resguardo</h2>
+        <h2>Paso 1 de 2: Resguardo</h2>
         
             <div class="datosEnvioTag">
                 <h4>Datos de Envío y Facturación</h4>
@@ -57,35 +57,30 @@
                     <%=domicilio%> <br>
                     <%=poblacion%> <%=cp%> <br>
                     <%=provincia%><br><br>
-                    <%
-                        if(!tarjeta.isEmpty()){
-                    %>
-                    <b>Número de tarjeta: </b><%=tarjeta%>
-                    <%
-                        }
-                    %>
                 </p>
                 
                 <h4>Forma de pago</h4>
                 <form method="post" onsubmit="ProcesarForm(this, 'Tramitacion', 'cuerpo'); return false;">
                     
+                  
+                    <input type="radio" name="formaPago" id="tarjeta" value="tarjeta" checked>Tarjeta de crédito
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="formaPago" id="contrareembolso" value="contrareembolso">Contrareembolso
+                    <br><br>
+                    
+                   
                     <%
-                        if(tarjeta.isEmpty()){
+                        if(!tarjeta.equals("null")){
                     %>
-                            <b>Debes introducir un número de tarjeta</b><br>
-                            <input type="radio" name="formaPago" id="tarjeta" value="tarjeta" disabled>Tarjeta de crédito
-                            <input type="radio" name="formaPago" id="contrareembolso" value="contrareembolso" checked>Contrareembolso
+                            <b>Número de tarjeta: </b><input type="number" name="numTarjeta" pattern="[0-9]{16}" value="<%=tarjeta%>">
                     <%
                         }
                         else {
                     %>
-                             <input type="radio" name="formaPago" id="tarjeta" value="tarjeta" checked>Tarjeta de crédito
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="formaPago" id="contrareembolso" value="contrareembolso">Contrareembolso
-                            <br><br>
+                            <b>Introducir número: </b><input type="number" name="numTarjeta" pattern="[0-9]{16}">
                     <%
                         }
                     %>
-                    
+                       
                     <h4>Datos de la compra</h4>
                     <table>
                         <thead><tr><th>  Nombre  </th><th>  Uds  </th><th>  Precio/Ud  </th><th>  Importe  </th></tr></thead>
