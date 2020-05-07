@@ -26,7 +26,7 @@
             String apellidos = infoUsuario.getString("apellidos");
         %>
         
-        <h2>Usuari@: <%=nombre%><%=apellidos%></h2>
+        <h2>Usuari@: <%=nombre%> <%=apellidos%></h2>
                 
         <div class="options">
             <a onclick="Cargar('cambiar_datos.jsp','cuerpo')" class="button1">Cambiar datos</a>

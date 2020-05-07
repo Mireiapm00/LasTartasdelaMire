@@ -40,18 +40,25 @@
                         int codigo = pedidosUsuario.getInt("id_pedido");
                         Date fecha = pedidosUsuario.getDate("fecha");
                         float importe = pedidosUsuario.getFloat("importe");
-                        String estado = pedidosUsuario.getString("estado");
-                        
+                        String estado = pedidosUsuario.getString("estado");     
                 %>
                 <tr>
                     <td class="alineado"><%=codigo%></td>
                     <td><%=fecha%></td>
                     <td><%=importe%>€</td>
                     <td><%=estado%></td>
-                    <td><input type="button" value="Eliminar pedido"/></td>
-                    <td></td>
+                    <%
+                        if(estado.equals("Pendiente")){
+                    %>
+                    
+                    <form method="post" onsubmit="ProcesarForm(this,'GestionarPedidosUsuario','cuerpo'); return false">
+                        <input type="text" name="id_p" value="<%=codigo%>"/>
+                        <td><input type="submit" value="Eliminar pedido" /></td>
+                    </form>
+                    
                 </tr>
                 <%
+                        }
                     }
                 %>
                 <tfoot>

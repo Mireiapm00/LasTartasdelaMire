@@ -9,9 +9,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+       
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="./css/estilos_usuario.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript">
+            function validar_clave(){
+                var clave = document.f1.c6.value;
+                var clave_repe = document.f1.c6_repe.value;
+                if(clave === clave_repe){
+                    ProcesarForm(f1, 'ModificarDatosUsuario', 'cuerpo');
+                    return true;
+                }else{
+                    alert("Las contraseñas deben de coincidir.");
+                    return false;
+                }
+            }
+        </script>
     </head>
     </head>
     <body>
@@ -33,23 +47,24 @@
             String usuario = infoUsuario.getString("usuario");
             String domicilio = infoUsuario.getString("domicilio");
             String tarjeta = infoUsuario.getString("tarjeta");
+            
         %>
         
         <h2>Modificar información</h2>
-        <form method="post" onsubmit="ProcesarForm(this, 'ModificarDatosUsuario', 'cuerpo'); return false">
+        <form name='f1' method="post" onsubmit="return validar_clave()">
         <table class="cambiarDatosTable">
             <tr><td colspan="2" style="padding-bottom: 1%;"><b>Introduce la siguiente información:</b></td></tr>
             <tr>
                 <td><label for="user">Usuario:</label></td>
-                <td><input id="user" type="text" name="c7" value="<%=usuario%>" required autofocus></td>
+                <td><input id="user" type="text" name="c7" value="<%=usuario%>" required autofocus disabled></td>
             </tr>
             <tr>
-                <td><label for="pass">Clave:</label></td>
+                <td><label for="pass">Contraseña:</label></td>
                 <td><input id="pass" type="text" name="c6" value="<%=pass%>" required></td>
             </tr>
             <tr>
-                <td><label for="tarj">Tarjeta:</label></td>
-                <td><input id="tarj" type="number" name="c9" pattern="[0-9]{9}" value="<%=tarjeta%>" required></td>
+                <td><label for="pass">Repite la contraseña:</label></td>
+                <td><input id="pass" type="text" name="c6_repe" value="<%=pass%>" required=""></td>
             </tr>
             <tr>
                 <td><label for="nombre">Nombre:</label></td>
@@ -76,8 +91,8 @@
                 <td><input id="cp" type="text" name="c5" value="<%=cp%>" required></td>
             </tr>
              <tr>
-                <td><label for="tarj">Tarjeta:</label></td>
-                <td><input id="tarj" type="number" name="tarj" pattern="[0-9]{16}" value="<%=tarjeta%>"></td>
+                <td><label for="tarj">Tarjeta (opcional):</label></td>
+                <td><input id="tarj" type="number" name="tarj" name="c9" pattern="[0-9]{16}" value="<%=tarjeta%>"></td>
             </tr>
             <tr>
                 <td><label for="tlf">Teléfono:</label></td>
@@ -86,7 +101,8 @@
             <tfoot>
              <tr>
                 <td colspan="2" id="botonesBar">
-                    <input type="submit" class="button3" name="bModificar" value="Guardar"/>
+                    <input type="submit" class="button3" name="bModificar" value="Guardar" />
+                    <input type="button" class="button3" name="bCancelar" value="Cancelar" onclick="Cargar('op_usuario.jsp','cuerpo')"/>
                 </td>
              </tr>
             </tfoot>

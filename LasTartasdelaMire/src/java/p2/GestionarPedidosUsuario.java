@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author arant
  */
-public class ModificarDatosUsuario extends HttpServlet {
+public class GestionarPedidosUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,36 +31,23 @@ public class ModificarDatosUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        AccesoBD con = new AccesoBD();
-        HttpSession sesion = request.getSession(true);
-        
-        String direccion = (String) sesion.getAttribute("origen_resguardo");
-        //String bmodificar = (String) request.getParameter("bModificar");
-        
-        String[] datos = new String[10];
-        int id = (int)sesion.getAttribute("id_usuario");
-         
-
-        if(direccion != null)
-        {
-            for(int i = 3; i < 6; i++)
-                datos[i] = request.getParameter("c" + i);
-            datos[8] = request.getParameter("c" + 8);
-            
-            con.modificarUsuarioBD(datos, id, direccion);
-            response.sendRedirect(direccion);
-        }else
-        {
-            for(int i = 0; i < 10; i++)
-                datos[i] = request.getParameter("c" + i);
-            
-            con.modificarUsuarioBD(datos, id, direccion);
-            response.sendRedirect("op_usuario.jsp");
+        try(PrintWriter out = response.getWriter()){
+            out.println("<h1>HOLAAAAAAAAAAAAAAAAAAAAAAA</h1>");
         }
         
-    }
+        AccesoBD con = new AccesoBD();
+        HttpSession sesion = request.getSession();
+        
+        String id = (String) request.getParameter("id_p");
+        //int id_pedido = Integer.parseInt(id);
+
+        con.eliminarPedidoUsuarioBD(id);
+        
 
      
+        response.sendRedirect("op_usuario.jsp");
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

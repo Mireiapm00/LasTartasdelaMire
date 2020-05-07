@@ -50,7 +50,7 @@
             <div class="datosEnvioTag">
                 <h4>Datos de Envío y Facturación</h4>
                 
-                <input type="submit" class="button3" name="bModificar" value="Cambiar Datos" onclick="Cargar('cambiar_datos.jsp', 'cuerpo')"/>
+                <input type="button" class="button3" name="bModificar" value="Cambiar Datos" onclick="Cargar('cambiar_direccion.jsp', 'cuerpo')"/>
               
                 <p>
                     <%=nombre%> <%=apellidos%> - <%=tlf%><br>

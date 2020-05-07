@@ -192,17 +192,22 @@ public class AccesoBD {
         return resultados;
     }
     
-    public boolean modificarUsuarioBD(String[] datos, int id){
+    public boolean modificarUsuarioBD(String[] datos, int id, String direccion){
         abrirConexionBD();
         
         boolean ok = false;
         try{
             String con;
             Statement s = conexionBD.createStatement();
-            con = "UPDATE usuarios SET nombre=\"" + datos[0] + "\", apellidos=\"" + datos[1] +
-                    "\", tlf=\"" + datos[2] + "\", poblacion=\"" + datos[3] + "\", provincia=\"" + datos[4] +
-                     "\", cp=\"" + datos[5] + "\", password=\"" + datos[6] + "\", usuario=\"" + datos[7] + 
-                    "\", domicilio=\"" + datos[8] + "\", tarjeta=\"" + datos[9] + "\" WHERE id=" + id + ";"; 
+            if(direccion == null){
+                con = "UPDATE usuarios SET nombre=\"" + datos[0] + "\", apellidos=\"" + datos[1] +
+                        "\", tlf=\"" + datos[2] + "\", poblacion=\"" + datos[3] + "\", provincia=\"" + datos[4] +
+                         "\", cp=\"" + datos[5] + "\", password=\"" + datos[6] + "\", usuario=\"" + datos[7] + 
+                        "\", domicilio=\"" + datos[8] + "\", tarjeta=\"" + datos[9] + "\" WHERE id=" + id + ";"; 
+            }else{
+                con = "UPDATE usuarios SET  poblacion=\"" + datos[3] + "\", provincia=\"" + datos[4] +
+                         "\", cp=\"" + datos[5] + "\", domicilio=\"" + datos[8] + "\" WHERE id=" + id + ";";
+            }
             s.executeUpdate(con);
             ok = true;
         }catch(Exception e){
@@ -286,6 +291,20 @@ public class AccesoBD {
         }
                 
         return resultados;
+    }
+    
+    public void eliminarPedidoUsuarioBD(String id_pedido){
+        abrirConexionBD();
+        
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "DELETE FROM pedidos WHERE id_pedido=" + 6 + ";";
+            s.executeUpdate(con);
+        }
+        catch(Exception e){
+            System.out.println("Error al actualizar la BBDD");
+        }  
     }
     
     public ResultSet obtenerUltimoPedidoBD() {
