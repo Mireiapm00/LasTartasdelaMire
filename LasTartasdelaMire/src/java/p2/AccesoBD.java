@@ -293,13 +293,13 @@ public class AccesoBD {
         return resultados;
     }
     
-    public void eliminarPedidoUsuarioBD(String id_pedido){
+    public void eliminarPedidoUsuarioBD(String estado, int id_pedido){
         abrirConexionBD();
         
         try {
             String con;
             Statement s = conexionBD.createStatement();
-            con = "DELETE FROM pedidos WHERE id_pedido=" + 6 + ";";
+            con = "UPDATE pedidos SET estado=\"" + estado + "\" WHERE id_pedido=" + id_pedido + ";";
             s.executeUpdate(con);
         }
         catch(Exception e){

@@ -31,21 +31,14 @@ public class GestionarPedidosUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        try(PrintWriter out = response.getWriter()){
-            out.println("<h1>HOLAAAAAAAAAAAAAAAAAAAAAAA</h1>");
-        }
-        
         AccesoBD con = new AccesoBD();
-        HttpSession sesion = request.getSession();
         
         String id = (String) request.getParameter("id_p");
-        //int id_pedido = Integer.parseInt(id);
+        int id_pedido = Integer.parseInt(id);
 
-        con.eliminarPedidoUsuarioBD(id);
-        
-
+        con.eliminarPedidoUsuarioBD("Cancelado", id_pedido);
      
-        response.sendRedirect("op_usuario.jsp");
+        response.sendRedirect("gestionar_pedidos.jsp");
 
     }
 

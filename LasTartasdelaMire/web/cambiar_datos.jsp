@@ -51,12 +51,12 @@
         %>
         
         <h2>Modificar información</h2>
-        <form name='f1' method="post" onsubmit="return validar_clave()">
+        <form name='f1' method="post" onsubmit="validar_clave()">
         <table class="cambiarDatosTable">
             <tr><td colspan="2" style="padding-bottom: 1%;"><b>Introduce la siguiente información:</b></td></tr>
             <tr>
                 <td><label for="user">Usuario:</label></td>
-                <td><input id="user" type="text" name="c7" value="<%=usuario%>" required autofocus disabled></td>
+                <td><input id="user" type="text" name="c7" value="<%=usuario%>" required  disabled></td>
             </tr>
             <tr>
                 <td><label for="pass">Contraseña:</label></td>

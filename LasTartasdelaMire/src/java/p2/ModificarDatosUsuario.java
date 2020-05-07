@@ -7,6 +7,7 @@ package p2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,16 +47,18 @@ public class ModificarDatosUsuario extends HttpServlet {
             for(int i = 3; i < 6; i++)
                 datos[i] = request.getParameter("c" + i);
             datos[8] = request.getParameter("c" + 8);
-            
             con.modificarUsuarioBD(datos, id, direccion);
             response.sendRedirect(direccion);
-        }else
+            
+        }
+        else
         {
             for(int i = 0; i < 10; i++)
                 datos[i] = request.getParameter("c" + i);
             
             con.modificarUsuarioBD(datos, id, direccion);
             response.sendRedirect("op_usuario.jsp");
+            
         }
         
     }

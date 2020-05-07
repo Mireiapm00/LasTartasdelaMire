@@ -50,12 +50,12 @@
                     <%
                         if(estado.equals("Pendiente")){
                     %>
-                    
-                    <form method="post" onsubmit="ProcesarForm(this,'GestionarPedidosUsuario','cuerpo'); return false">
-                        <input type="text" name="id_p" value="<%=codigo%>"/>
-                        <td><input type="submit" value="Eliminar pedido" /></td>
-                    </form>
-                    
+                    <td>
+                        <form method="post" onsubmit="ProcesarForm(this,'GestionarPedidosUsuario','cuerpo'); return false">
+                            <input type="text" name="id_p" hidden value="<%=codigo%>"/>
+                            <input type="submit" value="Eliminar pedido"  />
+                        </form>
+                    </td>
                 </tr>
                 <%
                         }
