@@ -15,7 +15,7 @@
     </head>
     <body>
         <h2>Carrito</h2>
-        <%
+        <%         
             String mensaje = (String)session.getAttribute("mensaje");
             if(mensaje != null){
                 session.removeAttribute("mensaje");
@@ -41,7 +41,6 @@
                             </tr>
                         </table>
                         <input class="button0" type="submit" value="Acceder">
-                        <input class="button0" type="button" value="Registrarse" onclick="Cargar('registrarse.html', 'cuerpo')">
                     </form>
                 </div>
        
