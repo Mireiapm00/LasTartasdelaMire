@@ -32,6 +32,10 @@
         <servlet-name>GestionarPedidosUsuario</servlet-name>
         <servlet-class>p2.GestionarPedidosUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroUsuario</servlet-name>
+        <servlet-class>p2.RegistroUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginTienda</servlet-name>
         <url-pattern>/LoginTienda</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>GestionarPedidosUsuario</servlet-name>
         <url-pattern>/GestionarPedidosUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroUsuario</servlet-name>
+        <url-pattern>/RegistroUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

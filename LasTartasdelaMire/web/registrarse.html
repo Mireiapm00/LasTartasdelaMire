@@ -53,10 +53,14 @@ and open the template in the editor.
                     <td><label for="cp">CP</label></td>
                     <td><input id="cp" type="text" name="cp" required></td>
                 </tr>
+                <tr>
+                    <td><label for="tarj">Tarjeta (opcional):</label></td>
+                    <td><input id="tarj" type="number" name="tarj" pattern="[0-9]{16}"></td>
+                </tr>
             </tbody>
             <tfoot>
                 <tr>
-                   <td>
+                    <td colspan="2">
                      <input class="button2" type="submit" value="Registrarse"/>
                      <input class="button2" type="reset" value="Cancelar"/>
                    </td>

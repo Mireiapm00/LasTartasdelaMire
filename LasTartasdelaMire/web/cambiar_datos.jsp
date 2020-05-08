@@ -92,7 +92,7 @@
             </tr>
              <tr>
                 <td><label for="tarj">Tarjeta (opcional):</label></td>
-                <td><input id="tarj" type="number" name="tarj" name="c9" pattern="[0-9]{16}" value="<%=tarjeta%>"></td>
+                <td><input id="tarj" type="number" name="c9" pattern="[0-9]{16}" value="<%=tarjeta%>"></td>
             </tr>
             <tr>
                 <td><label for="tlf">Teléfono:</label></td>

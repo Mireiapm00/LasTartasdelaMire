@@ -41,7 +41,7 @@
                             </tr>
                         </table>
                         <input class="button0" type="submit" value="Acceder">
-                        <input class="button0" type="button" value="Registrarse" onclick="Cargar('registrarse.html', 'cuerpo')">
+                        <input class="button0" type="button" value="Registrarse" onclick="Cargar('registrarse.jsp', 'cuerpo')">
                     </form>
                 </div>
             </form>

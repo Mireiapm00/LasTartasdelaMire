@@ -217,6 +217,28 @@ public class AccesoBD {
         
         return ok;
     }
+    
+    public boolean registrarUsuarioBD(String[] datos) {
+        abrirConexionBD();
+        boolean ok = false;
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "INSERT INTO usuarios(nombre, apellidos, tlf, poblacion, provincia, cp, password, usuario, domicilio, tarjeta)"
+                    + " VALUES (\"" + datos[0] + "\",\"" + datos[1] + "\", " + datos[2] + ",\"" + datos[3] + "\", \"" 
+                    + datos[4] + "\", " + datos[5] + ",\"" + datos[6] + "\", \""  + datos[7] + "\",\""
+                    + datos[8] + "\", \"" + datos[9] + "\")";
+            
+            
+            s.executeUpdate(con);
+            ok = true;
+
+        }catch(Exception e){
+            System.out.println("Error al insertar en la BBDD");
+        }
+        
+        return ok;
+    }
 
     int obtenerStockProductoBD(int id) throws SQLException {
         abrirConexionBD();
