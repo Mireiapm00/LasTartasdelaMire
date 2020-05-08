@@ -36,7 +36,11 @@ public class GestionarPedidosUsuario extends HttpServlet {
         String id = (String) request.getParameter("id_p");
         int id_pedido = Integer.parseInt(id);
 
+        /*ResultSet detallesPedido = con.obtenerDetallesPedidoBD(id_pedido);*/
+        
         con.eliminarPedidoUsuarioBD("Cancelado", id_pedido);
+        
+        
      
         response.sendRedirect("gestionar_pedidos.jsp");
 

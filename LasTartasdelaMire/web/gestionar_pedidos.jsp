@@ -4,8 +4,6 @@
     Author     : arant
 --%>
 
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
 <%@page import="java.lang.String"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.sql.ResultSet"%>
@@ -23,9 +21,8 @@
             ResultSet infoUsuario = con.obtenerUsuarioBD(usuarioA);
             infoUsuario.next();
             int id = infoUsuario.getInt("id");
-            
+           
             ResultSet pedidosUsuario = con.obtenerPedidosUsuarioBD(id);
-
         %>
         <h2>Gestionar pedidos</h2>
        
@@ -45,17 +42,6 @@
                         Date fecha = pedidosUsuario.getDate("fecha");
                         float importe = pedidosUsuario.getFloat("importe");
                         String estado = pedidosUsuario.getString("estado");  
-                        String carrito = pedidosUsuario.getString("carrito");
-                        
-                        Map<Integer, Integer> map = new HashMap<Integer,Integer>();
-                        
-                        String[] pairs = carrito.split("{ *:* }");
-                        
-                        for(int i = 0; i < pairs.length; i++){
-                            String pair = pairs[i];
-                            String[] keyValue = pair.split(":");
-                            map.put((Integer.valueOf(keyValue[0])), (Integer.valueOf(keyValue[1])));
-                        }
                         
                 %>
                 <tr>
@@ -63,6 +49,7 @@
                     <td><%=fecha%></td>
                     <td><%=importe%>€</td>
                     <td><%=estado%></td>
+                    
                     <%
                         if(estado.equals("Pendiente")){
                     %>
@@ -75,6 +62,7 @@
                 </tr>
                 <%
                         }
+                       
                     }
                 %>
                 <tfoot>

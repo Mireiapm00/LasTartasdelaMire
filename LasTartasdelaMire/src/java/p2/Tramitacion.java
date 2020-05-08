@@ -11,12 +11,9 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.json.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -104,7 +101,7 @@ public class Tramitacion extends HttpServlet {
             sesion.setAttribute("contrareembolso", " ");
         }
         
-        Map<String,String> caBD = new HashMap<>();
+        /*Map<String,String> caBD = new HashMap<>();
         for(ProductoBD p: carrito){
             caBD.put((String.valueOf(p.getId())), (String.valueOf(p.getCantidad())));
         }
@@ -112,10 +109,11 @@ public class Tramitacion extends HttpServlet {
         JsonObjectBuilder builder = Json.createObjectBuilder();
         caBD.forEach(builder::add);
         JsonObject carritoBD = builder.build();
+        */
         
         AccesoBD con = new AccesoBD();
         
-        if(!con.registrarPedidoBD(idUsuario, fecha, importe_total, direccion_envio, poblacion, cp, tipo_pago, tarjeta, "Pendiente", carritoBD)){
+        if(!con.registrarPedidoBD(idUsuario, fecha, importe_total, direccion_envio, poblacion, cp, tipo_pago, tarjeta, "Pendiente")){
             response.sendError(5005, "Error al registrar el pedido en la BD");
         }
         else {
@@ -124,8 +122,14 @@ public class Tramitacion extends HttpServlet {
             int stock;
 
             try {
+                int id_pedido = con.obtenerIdUltimoPedidoBD();
+                
                 for(ProductoBD p : carrito){
                     stock = con.obtenerStockProductoBD(p.getId());
+                    
+                    con.registrarDetallePedidoBD(id_pedido, p.getId(), p.getCantidad(), p.getPrecio());
+                    
+                    
                     stock -= p.getCantidad();
                     con.actualizarStockProductoBD(p.getId(), stock); 
                 }

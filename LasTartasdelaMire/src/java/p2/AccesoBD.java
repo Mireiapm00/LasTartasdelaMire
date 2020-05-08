@@ -12,7 +12,6 @@ package p2;
 
 import java.sql.*;
 import java.util.*;
-import javax.json.JsonObject;
 
 public class AccesoBD {
     
@@ -263,16 +262,16 @@ public class AccesoBD {
     }
 
     public boolean registrarPedidoBD(int idUsuario, String fecha, float importe_total, String direccion_envio, 
-            String poblacion, int cp, String tipo_pago, String tarjeta, String estado, JsonObject carritoBD) {
+            String poblacion, int cp, String tipo_pago, String tarjeta, String estado) {
         boolean ok = false;
         abrirConexionBD();
         
         try {
             String con;
             Statement s = conexionBD.createStatement();
-            con = "INSERT INTO pedidos(usuario, fecha, importe, direccion_envio, poblacion, codigo_postal, tipo_pago, numero_tarjeta, estado, carrito)"
+            con = "INSERT INTO pedidos(usuario, fecha, importe, direccion_envio, poblacion, codigo_postal, tipo_pago, numero_tarjeta, estado)"
                     + " VALUES (" + idUsuario + ",STR_TO_DATE('" + fecha + "', '%d/%m/%Y')," + importe_total + ", \"" + direccion_envio + "\", \"" 
-                    + poblacion + "\", " + cp + ", \"" + tipo_pago + "\" ,\"" + tarjeta + "\", \"" + estado + "\", '" + carritoBD + "' )";
+                    + poblacion + "\", " + cp + ", \"" + tipo_pago + "\" ,\"" + tarjeta + "\", \"" + estado + "\");";
             s.executeUpdate(con);
             ok = true;
         }
@@ -281,6 +280,27 @@ public class AccesoBD {
         }
         
         return ok;
+    }
+    
+    public boolean registrarDetallePedidoBD(int id_pedido, int id_producto, int unidades, float precio_unitario){
+        boolean ok = false;
+        abrirConexionBD();
+        
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "INSERT INTO detalles_pedido(id_pedido, id_producto, unidades, precio_unitario)"
+                    + "VALUES (" + id_pedido + ", " + id_producto + ", " + unidades + ", " + precio_unitario + ");";
+            s.executeUpdate(con);
+            ok = true;
+        }
+        catch(SQLException e){
+            System.out.println("Error al insertar en la BBDD");
+        }
+        
+        return ok;
+        
+        
     }
 
     public void actualizarStockProductoBD(int id, int stock) {
@@ -305,7 +325,7 @@ public class AccesoBD {
         try {
             String con;
             Statement s = conexionBD.createStatement();
-            con = "SELECT id_pedido, fecha, importe, estado, carrito FROM pedidos WHERE usuario=" + id + ";";
+            con = "SELECT id_pedido, fecha, importe, estado FROM pedidos WHERE usuario=" + id + ";";
             resultados = s.executeQuery(con);
         }
         catch(Exception e){
@@ -313,6 +333,24 @@ public class AccesoBD {
         }
                 
         return resultados;
+    }
+    
+    public ResultSet obtenerDetallesPedidoBD(int id_pedido){
+        abrirConexionBD();
+
+        ResultSet resultados = null;
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "SELECT * FROM detalles_pedido WHERE id_pedido=" + id_pedido + ";";
+            resultados = s.executeQuery(con);
+        }
+        catch(Exception e){
+            System.out.println("Error al completar la consulta");
+        }
+                
+        return resultados;
+        
     }
     
     public void eliminarPedidoUsuarioBD(String estado, int id_pedido){
@@ -344,6 +382,29 @@ public class AccesoBD {
         }
                 
         return resultados;
+    }
+    
+    int obtenerIdUltimoPedidoBD() throws SQLException {
+        abrirConexionBD();
+
+        int id_pedido = 0;
+        ResultSet resultados = null;
+        try {
+            String con;
+            Statement s = conexionBD.createStatement();
+            con = "SELECT id_pedido FROM pedidos ORDER BY id_pedido desc LIMIT 1;";
+            resultados = s.executeQuery(con);
+        }
+        catch(Exception e){
+            System.out.println("Error al completar la consulta");
+        }
+        
+        if(resultados != null){
+            resultados.next();
+            id_pedido = resultados.getInt("id_pedido");
+        }
+                
+        return id_pedido;
     }
     
 }
