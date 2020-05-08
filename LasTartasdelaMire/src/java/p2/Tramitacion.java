@@ -93,19 +93,12 @@ public class Tramitacion extends HttpServlet {
         Date d = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
         String fecha = dateFormat.format(d);
-        sesion.setAttribute("contrareembolso", "");
         
-        if(tipo_pago.equals("tarjeta") && tarjeta.equals("")){ //formapago tarjeta i no introduce numero
-            tarjeta = (String) sesion.getAttribute("tarjeta");
-            if(tarjeta.equals("null")){
-                sesion.setAttribute("contrareembolso", "contrareembolso");
-            }
-        }
-        else if(tipo_pago.equals("tarjeta") && !tarjeta.equals("")){
-            tarjeta = (String) sesion.getAttribute("tarjeta");
-        }
-        else if(tipo_pago.equals("contrareembolso")){
+        if(tipo_pago.equals("contrareembolso")){
             sesion.setAttribute("contrareembolso", "contrareembolso");
+        }
+        else {
+            sesion.setAttribute("contrareembolso", " ");
         }
         
         AccesoBD con = new AccesoBD();

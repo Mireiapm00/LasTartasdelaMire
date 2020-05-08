@@ -96,7 +96,7 @@
             </tr>
             <tr>
                 <td><label for="tlf">Teléfono:</label></td>
-                <td><input id="tlf" type="tel" name="c2" pattern="[0-9]{9}" value="<%=tlf%>" required></td>
+                <td><input id="tlf" type="tel" name="c2" pattern="[0-9]{9}" min="9" max="9" value="<%=tlf%>" required></td>
             </tr>
             <tfoot>
              <tr>

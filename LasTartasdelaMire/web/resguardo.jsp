@@ -38,11 +38,16 @@
             session.setAttribute("direccion_envio", domicilio);
             session.setAttribute("poblacion", poblacion);
             session.setAttribute("cp", cp);
-            if(!tarjeta.isEmpty()){
+             if(!tarjeta.equals("null")){
                 session.setAttribute("tarjeta", tarjeta);
+            }
+            else {
+                session.setAttribute("tarjeta", " ");
+                tarjeta = " ";
             }
             
             session.setAttribute("origen_resguardo", "resguardo.jsp");
+            
         %>
         
         <h2>Paso 1 de 2: Resguardo</h2>
@@ -62,24 +67,18 @@
                 <h4>Forma de pago</h4>
                 <form method="post" onsubmit="ProcesarForm(this, 'Tramitacion', 'cuerpo'); return false;">
                     
-                  
-                    <input type="radio" name="formaPago" id="tarjeta" value="tarjeta" checked>Tarjeta de crédito
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="formaPago" id="contrareembolso" value="contrareembolso">Contrareembolso
-                    <br><br>
+                    <%
+                        if(tarjeta.isEmpty()){
+                            tarjeta = "";
+                        }
+                    %>
                     
-                   
-                    <%
-                        if(!tarjeta.equals("null")){
-                    %>
-                            <b>Número de tarjeta: </b><input type="number" name="numTarjeta" pattern="[0-9]{16}" value="<%=tarjeta%>">
-                    <%
-                        }
-                        else {
-                    %>
-                            <b>Introducir número: </b><input type="number" name="numTarjeta" pattern="[0-9]{16}">
-                    <%
-                        }
-                    %>
+                    <input type="radio" name="formaPago" id="formaPago" value="tarjeta" onclick="comprobarCampoTarjeta(this, '<%=tarjeta%>');">Tarjeta de crédito
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="formaPago" id="formaPago" value="contrareembolso" onclick="comprobarCampoTarjeta(this, '<%=tarjeta%>');">Contrareembolso
+                    <br><br>
+                    <div id="numeroTarjeta">&nbsp;</div>        
+                    
+                    <br><br>
                        
                     <h4>Datos de la compra</h4>
                     <table>

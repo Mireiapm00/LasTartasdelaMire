@@ -35,15 +35,15 @@
                     <h4>Identificador del pedido: <%=id_pedido%></h4>
                     
                     <%
-                      if(session.getAttribute("contrareembolso").equals("contrareembolso")){
+                        if(session.getAttribute("contrareembolso").equals("contrareembolso")){
                     %>
-                    <p>No olvides que debes abonar el importe cuando recibas el pedido.</p>
+                            <p>No olvides que debes abonar el importe cuando recibas el pedido.</p>
                     <%
-                      }
+                        }                    
                     %>
-                    
+                          
                     <p>El pedido se entregará en los próximos días!</p>
-                    <a href="index.html" onclick="borrarCarrito();">Ir a inicio</a>
+                    <a href="index.html" onclick="borrarCarrito();" class="button3">Ir a inicio</a>
                 </div>
                 
         <%
