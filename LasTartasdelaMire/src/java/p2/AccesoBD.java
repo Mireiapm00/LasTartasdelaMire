@@ -12,6 +12,7 @@ package p2;
 
 import java.sql.*;
 import java.util.*;
+import javax.json.JsonObject;
 
 public class AccesoBD {
     
@@ -241,16 +242,16 @@ public class AccesoBD {
     }
 
     public boolean registrarPedidoBD(int idUsuario, String fecha, float importe_total, String direccion_envio, 
-            String poblacion, int cp, String tipo_pago, String tarjeta, String estado) {
+            String poblacion, int cp, String tipo_pago, String tarjeta, String estado, JsonObject carritoBD) {
         boolean ok = false;
         abrirConexionBD();
         
         try {
             String con;
             Statement s = conexionBD.createStatement();
-            con = "INSERT INTO pedidos(usuario, fecha, importe, direccion_envio, poblacion, codigo_postal, tipo_pago, numero_tarjeta, estado)"
+            con = "INSERT INTO pedidos(usuario, fecha, importe, direccion_envio, poblacion, codigo_postal, tipo_pago, numero_tarjeta, estado, carrito)"
                     + " VALUES (" + idUsuario + ",STR_TO_DATE('" + fecha + "', '%d/%m/%Y')," + importe_total + ", \"" + direccion_envio + "\", \"" 
-                    + poblacion + "\", " + cp + ", \"" + tipo_pago + "\" ,\"" + tarjeta + "\", \"" + estado + "\")";
+                    + poblacion + "\", " + cp + ", \"" + tipo_pago + "\" ,\"" + tarjeta + "\", \"" + estado + "\", '" + carritoBD + "' )";
             s.executeUpdate(con);
             ok = true;
         }
@@ -283,7 +284,7 @@ public class AccesoBD {
         try {
             String con;
             Statement s = conexionBD.createStatement();
-            con = "SELECT id_pedido, fecha, importe, estado FROM pedidos WHERE usuario=" + id + ";";
+            con = "SELECT id_pedido, fecha, importe, estado, carrito FROM pedidos WHERE usuario=" + id + ";";
             resultados = s.executeQuery(con);
         }
         catch(Exception e){

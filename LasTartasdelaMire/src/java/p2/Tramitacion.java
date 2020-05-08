@@ -11,9 +11,12 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.json.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -80,7 +83,7 @@ public class Tramitacion extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession sesion = request.getSession(true);
-        List<ProductoBD> carrito = (List<ProductoBD>) sesion.getAttribute("carrito");
+        List<ProductoBD> carrito = (List<ProductoBD>) sesion.getAttribute("carrito");        
         
         String tipo_pago = (String) request.getParameter("formaPago");
         String tarjeta = (String) request.getParameter("numTarjeta");
@@ -101,9 +104,18 @@ public class Tramitacion extends HttpServlet {
             sesion.setAttribute("contrareembolso", " ");
         }
         
+        Map<String,String> caBD = new HashMap<>();
+        for(ProductoBD p: carrito){
+            caBD.put((String.valueOf(p.getId())), (String.valueOf(p.getCantidad())));
+        }
+        
+        JsonObjectBuilder builder = Json.createObjectBuilder();
+        caBD.forEach(builder::add);
+        JsonObject carritoBD = builder.build();
+        
         AccesoBD con = new AccesoBD();
         
-        if(!con.registrarPedidoBD(idUsuario, fecha, importe_total, direccion_envio, poblacion, cp, tipo_pago, tarjeta, "Pendiente")){
+        if(!con.registrarPedidoBD(idUsuario, fecha, importe_total, direccion_envio, poblacion, cp, tipo_pago, tarjeta, "Pendiente", carritoBD)){
             response.sendError(5005, "Error al registrar el pedido en la BD");
         }
         else {

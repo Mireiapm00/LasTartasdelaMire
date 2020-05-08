@@ -4,6 +4,9 @@
     Author     : arant
 --%>
 
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.lang.String"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" import="p2.*" pageEncoding="UTF-8"%>
@@ -22,6 +25,7 @@
             int id = infoUsuario.getInt("id");
             
             ResultSet pedidosUsuario = con.obtenerPedidosUsuarioBD(id);
+
         %>
         <h2>Gestionar pedidos</h2>
        
@@ -40,7 +44,19 @@
                         int codigo = pedidosUsuario.getInt("id_pedido");
                         Date fecha = pedidosUsuario.getDate("fecha");
                         float importe = pedidosUsuario.getFloat("importe");
-                        String estado = pedidosUsuario.getString("estado");     
+                        String estado = pedidosUsuario.getString("estado");  
+                        String carrito = pedidosUsuario.getString("carrito");
+                        
+                        Map<Integer, Integer> map = new HashMap<Integer,Integer>();
+                        
+                        String[] pairs = carrito.split("{ *:* }");
+                        
+                        for(int i = 0; i < pairs.length; i++){
+                            String pair = pairs[i];
+                            String[] keyValue = pair.split(":");
+                            map.put((Integer.valueOf(keyValue[0])), (Integer.valueOf(keyValue[1])));
+                        }
+                        
                 %>
                 <tr>
                     <td class="alineado"><%=codigo%></td>
