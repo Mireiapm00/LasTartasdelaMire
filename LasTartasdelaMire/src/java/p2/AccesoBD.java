@@ -353,18 +353,38 @@ public class AccesoBD {
         
     }
     
-    public void eliminarPedidoUsuarioBD(String estado, int id_pedido){
+    public boolean eliminarPedidoUsuarioBD(String estado, int id_pedido){
         abrirConexionBD();
-        
+        boolean ok =false;
+        ResultSet resultados = null;
+        ArrayList<Integer> list = new ArrayList<Integer>();
         try {
             String con;
             Statement s = conexionBD.createStatement();
             con = "UPDATE pedidos SET estado=\"" + estado + "\" WHERE id_pedido=" + id_pedido + ";";
             s.executeUpdate(con);
+            if(estado.equals("Cancelado")){
+                con = "SELECT id_producto, unidades FROM detalles_pedido dp INNER JOIN pedidos p ON dp.id_pedido = p.id_pedido WHERE p.id_pedido=" + id_pedido + ";";
+                resultados = s.executeQuery(con);
+                while(resultados.next()){
+                    list.add(resultados.getInt("id_producto"));
+                    list.add(resultados.getInt("unidades"));
+                }
+                
+                for(int i = 0; i < list.size(); i = i + 2 ){
+                    con = "UPDATE productos SET stock = stock + " + list.get(i + 1)
+                            + " WHERE id_producto= " + list.get(i) + ";";
+                    s.executeUpdate(con);
+                }
+            }
+            ok = true;
+
         }
         catch(Exception e){
             System.out.println("Error al actualizar la BBDD");
-        }  
+        }
+        
+        return ok;
     }
     
     public ResultSet obtenerUltimoPedidoBD() {
