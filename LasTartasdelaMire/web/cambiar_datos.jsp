@@ -18,7 +18,7 @@
                 var clave = document.f1.c6.value;
                 var clave_repe = document.f1.c6_repe.value;
                 if(clave === clave_repe){
-                    ProcesarForm(f1, 'ModificarDatosUsuario', 'cuerpo');
+                    
                     return true;
                 }else{
                     alert("Las contraseñas deben de coincidir.");
@@ -51,7 +51,7 @@
         %>
         
         <h2>Modificar información</h2>
-        <form name='f1' method="post" onsubmit="validar_clave()">
+        <form name='f1' method="post" onsubmit="ProcesarForm(this, 'ModificarDatosUsuario', 'cuerpo'); return false">
         <table class="cambiarDatosTable">
             <tr><td colspan="2" style="padding-bottom: 1%;"><b>Introduce la siguiente información:</b></td></tr>
             <tr>
@@ -60,11 +60,11 @@
             </tr>
             <tr>
                 <td><label for="pass">Contraseña:</label></td>
-                <td><input id="pass" type="text" name="c6" value="<%=pass%>" required></td>
+                <td><input id="pass" type="text" name="c6" value="<%=pass%>" required onchange="validar_clave()"></td>
             </tr>
             <tr>
                 <td><label for="pass">Repite la contraseña:</label></td>
-                <td><input id="pass" type="text" name="c6_repe" value="<%=pass%>" required=""></td>
+                <td><input id="pass" type="text" name="c6_repe" value="<%=pass%>" required onchange="validar_clave()"></td>
             </tr>
             <tr>
                 <td><label for="nombre">Nombre:</label></td>

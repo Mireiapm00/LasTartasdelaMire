@@ -60,6 +60,7 @@ public class ModificarDatosUsuario extends HttpServlet {
             response.sendRedirect("op_usuario.jsp");
             
         }
+       
         
     }
 

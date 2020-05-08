@@ -229,11 +229,10 @@ public class AccesoBD {
                     + datos[4] + "\", " + datos[5] + ",\"" + datos[6] + "\", \""  + datos[7] + "\",\""
                     + datos[8] + "\", \"" + datos[9] + "\")";
             
-            
             s.executeUpdate(con);
             ok = true;
 
-        }catch(Exception e){
+        }catch(SQLException e){
             System.out.println("Error al insertar en la BBDD");
         }
         
