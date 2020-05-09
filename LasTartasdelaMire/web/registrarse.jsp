@@ -12,10 +12,9 @@
         <title>JSP Page</title>
         <script type="text/javascript">
             function validar_clave(){
-                var clave = document.f1.c6.value;
-                var clave_repe = document.f1.c6_repe.value;
+                var clave = document.f1.r6.value;
+                var clave_repe = document.f1.r6_repe.value;
                 if(clave === clave_repe){
-                    ProcesarForm(f1, 'RegistroUsuario', 'cuerpo');
                     return true;
                 }else{
                     alert("Las contraseñas deben de coincidir.");
@@ -27,7 +26,7 @@
     <body>
         <h2>Regístrate </h2>
        
-        <form method="post" onsubmit="ProcesarForm(this, 'RegistroUsuario', 'cuerpo'); return false">
+        <form name="f1" method="post" onsubmit="ProcesarForm(this, 'RegistroUsuario', 'cuerpo'); return false">
         <table class="registrarTable">
             <thead>
                 <tr><th colspan="1" style="padding-bottom: 10%;">Introduce la siguiente información:</th></tr>
@@ -43,7 +42,7 @@
                 </tr>
                 <tr>
                     <td><label for="pass">Repite la contraseña: </label></td>
-                    <td><input id="pass" type="password" name="r6_repe" required></td>
+                    <td><input id="pass" type="password" name="r6_repe" required onchange="validar_clave()"></td>
                 </tr>
                 <tr>
                     <td><label for="nombre">Nombre</label></td>

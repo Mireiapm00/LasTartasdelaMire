@@ -18,7 +18,6 @@
                 var clave = document.f1.c6.value;
                 var clave_repe = document.f1.c6_repe.value;
                 if(clave === clave_repe){
-                    
                     return true;
                 }else{
                     alert("Las contraseñas deben de coincidir.");
