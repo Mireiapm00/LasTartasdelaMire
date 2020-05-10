@@ -6,12 +6,10 @@
 package p2;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,13 +33,10 @@ public class GestionarPedidosUsuario extends HttpServlet {
         
         String id = (String) request.getParameter("id_p");
         int id_pedido = Integer.parseInt(id);
-
-        /*ResultSet detallesPedido = con.obtenerDetallesPedidoBD(id_pedido);*/
         
         con.eliminarPedidoUsuarioBD("Cancelado", id_pedido);
         
         
-     
         response.sendRedirect("gestionar_pedidos.jsp");
 
     }

@@ -335,6 +335,7 @@ public class AccesoBD {
         return resultados;
     }
     
+    /* Esta function no se utiliza... */
     public ResultSet obtenerDetallesPedidoBD(int id_pedido){
         abrirConexionBD();
 
